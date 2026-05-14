@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Anirudh Sriraman — Product Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface2: #222222;
+  --border: rgba(255,255,255,0.08);
+  --gold: #d4a853;
+  --gold-dim: rgba(212,168,83,0.15);
+  --text: #f0ece4;
+  --text-dim: rgba(240,236,228,0.55);
+  --text-mid: rgba(240,236,228,0.8);
+  --rust: #c4673a;
+  --green: #4caf7d;
+  --tab-h: 56px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TAB BAR ── */
+.tab-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(15,15,15,0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  height: calc(var(--tab-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+}
+.tab-btn {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px; background: none; border: none;
+  cursor: pointer; padding: 8px 4px;
+  transition: all 0.2s;
+}
+.tab-icon { font-size: 18px; line-height: 1; }
+.tab-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-dim);
+  transition: color 0.2s;
+}
+.tab-btn.active .tab-label { color: var(--gold); }
+.tab-btn.active .tab-icon { filter: none; }
+.tab-btn:not(.active) .tab-icon { opacity: 0.4; }
+
+/* ── PAGES ── */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-bottom: calc(var(--tab-h) + var(--safe-bottom) + 24px);
+  animation: fadeIn 0.3s ease;
+}
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+/* ── SHARED COMPONENTS ── */
+.page-header {
+  padding: 48px 20px 32px;
+  border-bottom: 1px solid var(--border);
+}
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px; display: block;
+}
+.page-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 8vw, 40px);
+  font-weight: 400; line-height: 1.1;
+  color: var(--text);
+}
+.page-sub {
+  font-size: 14px; color: var(--text-dim);
+  line-height: 1.6; margin-top: 8px;
+}
+
+.section { padding: 24px 20px; border-bottom: 1px solid var(--border); }
+.section:last-of-type { border-bottom: none; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 16px; display: block;
+}
+
+/* ── CTA BLOCK ── */
+.page-cta {
+  margin: 32px 20px 0;
+  padding: 24px;
+  background: var(--gold-dim);
+  border: 1px solid rgba(212,168,83,0.3);
+}
+.cta-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px; color: var(--text);
+  margin-bottom: 16px; line-height: 1.3;
+}
+.cta-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  padding: 12px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.2s; display: inline-block;
+}
+.btn-gold { background: var(--gold); color: #0f0f0f; }
+.btn-gold:hover { background: #e6bc6a; }
+.btn-outline { background: transparent; color: var(--gold); border: 1px solid rgba(212,168,83,0.5); }
+.btn-outline:hover { border-color: var(--gold); background: var(--gold-dim); }
+
+/* ══════════════════════════════
+   PAGE 1 — HOME
+══════════════════════════════ */
+.hero {
+  padding: 48px 20px 32px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(212,168,83,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: block;
+}
+.hero-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(40px, 12vw, 68px);
+  font-weight: 400; line-height: 0.95;
+  color: var(--text); margin-bottom: 16px;
+}
+.hero-name em { font-style: italic; color: var(--gold); }
+.hero-tag {
+  font-size: 14px; color: var(--text-dim);
+  line-height: 1.6; max-width: 340px;
+  margin-bottom: 28px;
+}
+.hero-tag strong { color: var(--text); font-weight: 600; }
+
+.status-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px;
+  background: rgba(76,175,125,0.12);
+  border: 1px solid rgba(76,175,125,0.3);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green);
+}
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0.3; }
+}
+
+/* STATS GRID */
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  margin: 0 20px;
+}
+.stat-cell {
+  background: var(--surface);
+  padding: 20px 16px;
+}
+.stat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px; font-weight: 400;
+  color: var(--text); line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-num em { color: var(--gold); font-style: normal; }
+.stat-label { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+/* ABOUT */
+.about-body {
+  font-size: 15px; line-height: 1.8;
+  color: var(--text-mid);
+}
+.about-body p + p { margin-top: 14px; }
+.about-body strong { color: var(--text); }
+
+/* BELIEF PILLS */
+.beliefs { display: flex; flex-direction: column; gap: 0; }
+.belief {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.belief:last-child { border-bottom: none; }
+.belief-ico { font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+.belief-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 4px; display: block;
+}
+.belief-text { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+/* ══════════════════════════════
+   PAGE 2 — CASES
+══════════════════════════════ */
+.case-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin: 16px 20px 0;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.case-card:first-child { margin-top: 20px; }
+.case-card.open { border-color: rgba(212,168,83,0.3); }
+
+.case-header {
+  padding: 20px;
+  cursor: pointer;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.case-metric-block { flex-shrink: 0; text-align: center; }
+.case-big-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 32px; color: var(--gold);
+  line-height: 1; display: block;
+}
+.case-big-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim); display: block; margin-top: 2px;
+}
+.case-info { flex: 1; min-width: 0; }
+.case-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--rust); display: block; margin-bottom: 6px;
+}
+.case-title {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  line-height: 1.3; margin-bottom: 6px;
+}
+.case-hook { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.case-chevron {
+  flex-shrink: 0; color: var(--text-dim);
+  font-size: 14px; margin-top: 4px;
+  transition: transform 0.25s;
+}
+.case-card.open .case-chevron { transform: rotate(180deg); color: var(--gold); }
+
+.case-detail {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--border);
+}
+.case-card.open .case-detail { display: block; }
+.case-detail-inner { padding-top: 16px; }
+.case-detail-inner p {
+  font-size: 13px; color: var(--text-dim);
+  line-height: 1.8; margin-bottom: 12px;
+}
+.case-detail-inner p:last-child { margin-bottom: 0; }
+.case-detail-inner strong { color: var(--text); }
+
+.case-metrics-row {
+  display: flex; gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-bottom: 16px;
+}
+.case-m-cell {
+  flex: 1; background: var(--surface2);
+  padding: 12px 10px; text-align: center;
+}
+.case-m-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px; color: var(--gold); display: block;
+}
+.case-m-label { font-size: 10px; color: var(--text-dim); line-height: 1.3; margin-top: 2px; }
+
+/* ══════════════════════════════
+   PAGE 3 — ON AI
+══════════════════════════════ */
+.ai-lesson-card {
+  margin: 16px 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.ai-lesson-card:first-child { margin-top: 20px; }
+.lesson-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px; display: block;
+}
+.lesson-title {
+  font-size: 16px; font-weight: 700; color: var(--text);
+  margin-bottom: 10px; line-height: 1.3;
+}
+.lesson-body { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+.lesson-body strong { color: var(--text); }
+
+/* FRAMEWORK */
+.fw-block {
+  margin: 16px 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.fw-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.fw-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.fw-chevron { color: var(--text-dim); font-size: 14px; transition: transform 0.25s; }
+.fw-block.open .fw-chevron { transform: rotate(180deg); color: var(--gold); }
+.fw-content { display: none; padding: 0 20px 20px; }
+.fw-block.open .fw-content { display: block; }
+
+.dim-list { margin-top: 16px; }
+.dim-item {
+  display: flex; gap: 12px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+.dim-item:last-child { border-bottom: none; }
+.dim-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--gold);
+  letter-spacing: 0.06em; min-width: 80px; flex-shrink: 0;
+}
+.dim-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+.gate-list { margin-top: 16px; }
+.gate-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px;
+  background: rgba(196,103,58,0.08);
+  border: 1px solid rgba(196,103,58,0.2);
+  margin-bottom: 8px;
+}
+.gate-item:last-child { margin-bottom: 0; }
+.gate-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--rust);
+  letter-spacing: 0.06em; flex-shrink: 0;
+  padding: 2px 6px; border: 1px solid rgba(196,103,58,0.4);
+}
+.gate-text { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* ROI TABLE */
+.roi-block {
+  margin: 16px 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.roi-stats-row {
+  display: flex; gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+  margin: 16px 0;
+}
+.roi-stat-cell {
+  flex: 1; background: var(--surface2);
+  padding: 14px 10px; text-align: center;
+}
+.roi-stat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px; color: var(--gold);
+  display: block; line-height: 1;
+}
+.roi-stat-label { font-size: 10px; color: var(--text-dim); margin-top: 4px; line-height: 1.3; }
+
+.roi-table-wrap { overflow-x: auto; }
+.roi-table { width: 100%; border-collapse: collapse; min-width: 280px; }
+.roi-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); padding: 8px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.roi-table th:not(:first-child) { text-align: center; }
+.roi-table td {
+  font-size: 12px; color: var(--text-dim);
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top; line-height: 1.4;
+}
+.roi-table td:not(:first-child) { text-align: center; color: var(--text-mid); }
+.roi-table tr.total td { color: var(--text); font-weight: 600; border-top: 1px solid rgba(212,168,83,0.3); }
+.roi-table small { font-size: 10px; color: var(--text-dim); display: block; margin-top: 2px; opacity:0.7; }
+.roi-note { font-size: 11px; color: var(--text-dim); font-style: italic; line-height: 1.6; margin-top: 12px; opacity: 0.7; }
+
+/* ══════════════════════════════
+   PAGE 4 — PORTFOLIO
+══════════════════════════════ */
+.gov-card {
+  margin: 16px 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.gov-card:first-child { margin-top: 20px; }
+.gov-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px; display: block;
+}
+.gov-title {
+  font-size: 16px; font-weight: 700; color: var(--text);
+  margin-bottom: 10px; line-height: 1.3;
+}
+.gov-body { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+.gov-body strong { color: var(--text); }
+
+.horizon-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin: 16px 0;
+}
+.horizon-cell {
+  background: var(--surface2);
+  padding: 14px 10px;
+}
+.horizon-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 6px; display: block;
+}
+.horizon-title { font-size: 12px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+.horizon-body { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+/* ══════════════════════════════
+   PAGE 5 — HOW I THINK
+══════════════════════════════ */
+.think-tabs {
+  display: flex; gap: 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto; padding: 0 20px;
+  scrollbar-width: none;
+}
+.think-tabs::-webkit-scrollbar { display: none; }
+.think-tab {
+  padding: 12px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim); background: none; border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.2s; margin-bottom: -1px;
+}
+.think-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+.think-panel { display: none; }
+.think-panel.active { display: block; }
+
+.think-card {
+  margin: 16px 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 18px;
+}
+.think-card:first-child { margin-top: 16px; }
+.think-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--rust); margin-bottom: 8px; display: block;
+}
+.think-title {
+  font-size: 14px; font-weight: 700; color: var(--text);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.think-body { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+.think-body strong { color: var(--text); }
+
+/* ══════════════════════════════
+   PAGE 6 — TESTIMONIALS
+══════════════════════════════ */
+.testimonial-card {
+  margin: 16px 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.testimonial-card:first-child { margin-top: 20px; }
+.t-problem {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: block;
+}
+.t-quote {
+  font-family: 'Instrument Serif', serif;
+  font-size: 16px; font-style: italic;
+  color: var(--text-mid); line-height: 1.6;
+  margin-bottom: 16px;
+}
+.t-quote::before { content: '\201C'; color: var(--gold); }
+.t-quote::after { content: '\201D'; color: var(--gold); }
+.t-person { display: flex; gap: 12px; align-items: center; }
+.t-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--gold-dim); border: 1px solid rgba(212,168,83,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--gold);
+  flex-shrink: 0; font-family: 'Syne', sans-serif;
+}
+.t-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.t-role { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+.t-rel {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: var(--gold); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-top: 2px; display: block;
+}
+
+/* ══════════════════════════════
+   PAGE 7 — CONTACT
+══════════════════════════════ */
+.contact-hero {
+  padding: 48px 20px 32px;
+  text-align: center;
+}
+.contact-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px; color: var(--text); margin-bottom: 8px;
+}
+.contact-tagline { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 28px; }
+.contact-btns { display: flex; flex-direction: column; gap: 10px; max-width: 300px; margin: 0 auto; }
+.contact-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 20px; text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: all 0.2s;
+}
+.contact-btn-primary { background: var(--gold); color: #0f0f0f; }
+.contact-btn-primary:hover { background: #e6bc6a; }
+.contact-btn-wa { background: rgba(37,211,102,0.15); color: #25d366; border: 1px solid rgba(37,211,102,0.3); }
+.contact-btn-li { background: rgba(10,102,194,0.15); color: #7cb9e8; border: 1px solid rgba(10,102,194,0.3); }
+.contact-btn-resume { background: var(--surface); color: var(--text-mid); border: 1px solid var(--border); }
+
+.contact-details {
+  padding: 24px 20px;
+  border-top: 1px solid var(--border);
+}
+.contact-detail-row {
+  display: flex; gap: 12px; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px; color: var(--text-mid);
+}
+.contact-detail-row:last-child { border-bottom: none; }
+.detail-ico { font-size: 16px; flex-shrink: 0; }
+
+.cert-wrap { padding: 0 20px; }
+.cert-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+}
+.cert-pill {
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── RESPONSIVE ── */
+@media (min-width: 600px) {
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .page-header { padding: 60px 32px 40px; }
+  .section { padding: 32px; }
+  .case-card, .ai-lesson-card, .fw-block, .roi-block,
+  .gov-card, .think-card, .testimonial-card { margin-left: 32px; margin-right: 32px; }
+  .page-cta { margin: 40px 32px 0; }
+  .cert-wrap { padding: 0 32px; }
+  .contact-hero { padding: 60px 32px 40px; }
+  .contact-details { padding: 32px; }
+  .think-tabs { padding: 0 32px; }
+}
+@media (min-width: 900px) {
+  .tab-bar { top: 0; bottom: auto; border-top: none; border-bottom: 1px solid var(--border); height: 56px; }
+  .page { padding-top: 56px; padding-bottom: 40px; }
+  .tab-btn { flex-direction: row; gap: 6px; padding: 0 20px; }
+  .tab-icon { font-size: 14px; }
+  .tab-label { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TAB BAR -->
+<nav class="tab-bar" id="tabBar">
+  <button class="tab-btn active" onclick="showPage('home',this)">
+    <span class="tab-icon">⌂</span>
+    <span class="tab-label">Home</span>
+  </button>
+  <button class="tab-btn" onclick="showPage('cases',this)">
+    <span class="tab-icon">◈</span>
+    <span class="tab-label">Work</span>
+  </button>
+  <button class="tab-btn" onclick="showPage('ai',this)">
+    <span class="tab-icon">◎</span>
+    <span class="tab-label">On AI</span>
+  </button>
+  <button class="tab-btn" onclick="showPage('portfolio',this)">
+    <span class="tab-icon">⬡</span>
+    <span class="tab-label">Portfolio</span>
+  </button>
+  <button class="tab-btn" onclick="showPage('think',this)">
+    <span class="tab-icon">◐</span>
+    <span class="tab-label">Thinking</span>
+  </button>
+  <button class="tab-btn" onclick="showPage('people',this)">
+    <span class="tab-icon">◇</span>
+    <span class="tab-label">People</span>
+  </button>
+  <button class="tab-btn" onclick="showPage('contact',this)">
+    <span class="tab-icon">→</span>
+    <span class="tab-label">Contact</span>
+  </button>
+</nav>
+
+<!-- ══ PAGE: HOME ══ -->
+<div class="page active" id="page-home">
+
+  <div class="hero">
+    <span class="hero-eyebrow">Director of Product · Dubai, UAE · Open to GCC opportunities</span>
+    <h1 class="hero-name">Anirudh<br><em>Sriraman</em></h1>
+    <p class="hero-tag">Building <strong>AI-powered CX platforms</strong> that scale enterprise revenue — across GCC regulated markets, Fortune 500, and government enterprise.</p>
+    <div class="status-pill">
+      <div class="status-dot"></div>
+      Available · Director / Sr. Director roles
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-cell">
+      <div class="stat-num">$<em>6</em>M</div>
+      <div class="stat-label">ARR from zero at Dropthought</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">96<em>%</em></div>
+      <div class="stat-label">Customer retention</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">14<em>→</em>35<em>%</em></div>
+      <div class="stat-label">RFP win rate</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">14<em>+</em></div>
+      <div class="stat-label">Years in enterprise B2B SaaS</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-label">About</span>
+    <div class="about-body">
+      <p>I build products that make enterprise data <strong>useful — not just collected.</strong> Over 14 years across the US, GCC, and Asia, I've led the full arc: from zero-to-one product creation to portfolio governance, M&A evaluation, and P&L ownership.</p>
+      <p>At Bahwan CyberTek, I grew Dropthought from an acquired startup into a <strong>$6M ARR enterprise CX platform</strong> serving Cisco, HP, Adobe, and government entities in UAE, Oman, and Singapore. Dropthought expanded into a multi-product portfolio — and I led product strategy, org design, and commercial execution across the full suite.</p>
+      <p>What I do differently: I treat product decisions as <strong>commercial bets.</strong> Every feature maps to retention, expansion, or win rate — not just user feedback.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="section-label">What I believe</span>
+    <div class="beliefs">
+      <div class="belief">
+        <div class="belief-ico">◈</div>
+        <div>
+          <span class="belief-label">On Strategy</span>
+          <div class="belief-text">Sequencing matters more than vision. The right move at the wrong time fails. I build roadmaps around organisational readiness, not just market opportunity.</div>
+        </div>
+      </div>
+      <div class="belief">
+        <div class="belief-ico">◎</div>
+        <div>
+          <span class="belief-label">On AI Products</span>
+          <div class="belief-text">AI features without governance become liabilities. Human-in-the-loop design and CX maturity gates aren't overhead — they're what make deployments stick.</div>
+        </div>
+      </div>
+      <div class="belief">
+        <div class="belief-ico">⬡</div>
+        <div>
+          <span class="belief-label">On GCC Markets</span>
+          <div class="belief-text">Government enterprise in UAE and KSA requires a different playbook: DESC ISR compliance, Arabic NLP, outcomes framed in citizen satisfaction — not SaaS metrics.</div>
+        </div>
+      </div>
+      <div class="belief">
+        <div class="belief-ico">◇</div>
+        <div>
+          <span class="belief-label">On Teams</span>
+          <div class="belief-text">PMs who only manage tickets don't last. I build product managers who can defend architectural decisions, challenge sales assumptions, and own outcomes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-cta">
+    <div class="cta-text">Seen enough to be curious?</div>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-gold" onclick="showPage('cases',document.querySelectorAll('.tab-btn')[1]);return false;">View Case Studies</a>
+      <a href="#" class="btn btn-outline" onclick="showPage('contact',document.querySelectorAll('.tab-btn')[6]);return false;">Get in Touch</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE: CASE STUDIES ══ -->
+<div class="page" id="page-cases">
+  <div class="page-header">
+    <span class="eyebrow">02 — Work</span>
+    <h2 class="page-title">Case Studies</h2>
+    <p class="page-sub">Five high-impact decisions — the context, the trade-off, and the result.</p>
+  </div>
+
+  <!-- Case 1 -->
+  <div class="case-card" onclick="toggleCase(this)">
+    <div class="case-header">
+      <div class="case-metric-block">
+        <span class="case-big-num">35<em style="font-size:18px">%</em></span>
+        <span class="case-big-unit">Win Rate</span>
+      </div>
+      <div class="case-info">
+        <span class="case-tag">Revenue · Presales</span>
+        <div class="case-title">Rebuilding the Enterprise Win Rate</div>
+        <div class="case-hook">RFP responses were generic and win rates were flat. Built a 27-dimension scoring model and outcome-based positioning — turning reactive sales into a disciplined commercial system.</div>
+      </div>
+      <span class="case-chevron">▾</span>
+    </div>
+    <div class="case-detail">
+      <div class="case-metrics-row">
+        <div class="case-m-cell"><span class="case-m-num">14→35%</span><div class="case-m-label">RFP win rate</div></div>
+        <div class="case-m-cell"><span class="case-m-num">27</span><div class="case-m-label">Scoring dimensions</div></div>
+        <div class="case-m-cell"><span class="case-m-num">$25M+</span><div class="case-m-label">Pipeline managed</div></div>
+      </div>
+      <div class="case-detail-inner">
+        <p><strong>The problem:</strong> BCT's sales team was pursuing every RFP regardless of fit — winning on relationship, losing on merit. Win rate plateaued at 14% across a $25M+ pipeline.</p>
+        <p><strong>What I did:</strong> Built a 27-dimension opportunity scoring model segmenting prospects into four CX maturity tiers. Repositioned RFP responses to speak the buyer's language — audit trails and citizen satisfaction for government; CLV and churn reduction for enterprise. Introduced qualification gates and killed bids below threshold.</p>
+        <p><strong>The result:</strong> Win rate climbed from 14% to 35%. Fewer bids, higher conversion. The qualification framework became standard practice across BCT's sales org.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 2 -->
+  <div class="case-card" onclick="toggleCase(this)">
+    <div class="case-header">
+      <div class="case-metric-block">
+        <span class="case-big-num">40</span>
+        <span class="case-big-unit">Engineers</span>
+      </div>
+      <div class="case-info">
+        <span class="case-tag">Crisis Leadership</span>
+        <div class="case-title">Inheriting Engineering During the Great Resignation</div>
+        <div class="case-hook">VP of Engineering departed. Eight senior engineers followed. A $2M backlog order was at risk. I stepped in with no formal authority and delivered on time.</div>
+      </div>
+      <span class="case-chevron">▾</span>
+    </div>
+    <div class="case-detail">
+      <div class="case-metrics-row">
+        <div class="case-m-cell"><span class="case-m-num">40</span><div class="case-m-label">Engineers led</div></div>
+        <div class="case-m-cell"><span class="case-m-num">0</span><div class="case-m-label">Penalties incurred</div></div>
+        <div class="case-m-cell"><span class="case-m-num">3</span><div class="case-m-label">PMs promoted</div></div>
+      </div>
+      <div class="case-detail-inner">
+        <p><strong>The situation:</strong> The Great Resignation hit BCT hard. Within 90 days the VP of Engineering and 8 senior ICs departed. A $2M backlog order had a fixed delivery deadline with no slack — missing it carried contractual consequences.</p>
+        <p><strong>How I handled it:</strong> Week one and two: one-on-ones with all six team leads. My message was deliberate — <em>"I'm not pretending to be a CTO. I'm here to unblock you and prioritise ruthlessly. What do you need?"</em> I wasn't going to earn credibility by bluffing technical depth. I was going to earn it by making their decisions faster. I also changed how the team worked together: expanded demo days to include API teams showcasing backend work before UI development, so the product team could verify data accuracy early. That caught three major pipeline bugs before they reached the UI layer.</p>
+        <p><strong>Outcome:</strong> Zero engineering attrition over 15 months — against an industry average of 20%+ turnover during the Great Resignation. The $2M order was delivered on time with no contractual penalties. Three PMs promoted to Senior PM during the same period. BCT senior leadership explicitly recognised the stabilisation effort.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 3 -->
+  <div class="case-card" onclick="toggleCase(this)">
+    <div class="case-header">
+      <div class="case-metric-block">
+        <span class="case-big-num">78<em style="font-size:18px">%</em></span>
+        <span class="case-big-unit">Accuracy</span>
+      </div>
+      <div class="case-info">
+        <span class="case-tag">AI · Custom NLP · GCC</span>
+        <div class="case-title">Building Arabic NLP from Scratch — and Making It Accurate Enough to Ship</div>
+        <div class="case-hook">GCC enterprise clients needed Arabic sentiment analysis. We chose to build a custom model — not buy. The hard problem wasn't building it, it was making it accurate enough to trust. HumInt was the solution.</div>
+      </div>
+      <span class="case-chevron">▾</span>
+    </div>
+    <div class="case-detail">
+      <div class="case-metrics-row">
+        <div class="case-m-cell"><span class="case-m-num">52→78%</span><div class="case-m-label">NLP accuracy</div></div>
+        <div class="case-m-cell"><span class="case-m-num">5.4M+</span><div class="case-m-label">Labeled data points</div></div>
+        <div class="case-m-cell"><span class="case-m-num">90%</span><div class="case-m-label">Inter-annotator agreement</div></div>
+      </div>
+      <div class="case-detail-inner">
+        <p><strong>The decision:</strong> Arabic NLP was a genuine competitive differentiator for GCC enterprise — and a genuine technical challenge. Arabic has significant dialectal variation and limited training data compared to English. We chose to build a custom model rather than rely on off-the-shelf solutions, because the use case — enterprise CX sentiment analysis in regulated GCC markets — required accuracy and explainability that generic models couldn't guarantee.</p>
+        <p><strong>The problem we had to solve:</strong> A custom model is only as good as the data it's trained on. Our initial classification accuracy was 52% — too low to put in front of enterprise clients. The bottleneck was labeling quality: without consistent, high-quality human annotations, the model couldn't improve. We needed a way to produce training data at scale with measurable quality controls.</p>
+        <p><strong>What I built:</strong> HumInt — an in-house human annotation pipeline with automated sentence parsing, dual-annotator consensus workflows, and IRR-based quality gates. Every labeled data point required agreement between two annotators before entering the training set. Disagreements triggered a structured adjudication process. An annotator productivity dashboard tracked throughput, agreement rates, and escalation patterns — reducing labeling cycle time by 35%.</p>
+        <p><strong>The result:</strong> NLP classification accuracy improved from 52% to 78%. The HumInt pipeline processed 5.4M+ labeled data points at 90% inter-annotator agreement over three years. Arabic-language sentiment analysis became a genuine competitive differentiator in GCC markets — something clients in UAE, Oman, and Singapore couldn't get from any competitor without equivalent investment.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 4 -->
+  <div class="case-card" onclick="toggleCase(this)">
+    <div class="case-header">
+      <div class="case-metric-block">
+        <span class="case-big-num">18</span>
+        <span class="case-big-unit">Months saved</span>
+      </div>
+      <div class="case-info">
+        <span class="case-tag">M&A · Portfolio Strategy</span>
+        <div class="case-title">Krita.ai Acquisition — Collapsing the AI Roadmap</div>
+        <div class="case-hook">Rather than build agentic AI from scratch, I led a $1.2M acquisition that collapsed an 18-month build timeline and added capability that would have cost multiples more internally.</div>
+      </div>
+      <span class="case-chevron">▾</span>
+    </div>
+    <div class="case-detail">
+      <div class="case-metrics-row">
+        <div class="case-m-cell"><span class="case-m-num">$1.2M</span><div class="case-m-label">Acquisition led</div></div>
+        <div class="case-m-cell"><span class="case-m-num">18mo</span><div class="case-m-label">Roadmap acceleration</div></div>
+        <div class="case-m-cell"><span class="case-m-num">3</span><div class="case-m-label">Products in portfolio</div></div>
+      </div>
+      <div class="case-detail-inner">
+        <p><strong>The context:</strong> Enterprise clients were asking for agentic AI — automated workflows, proactive CX interventions. Building this internally would have taken 18+ months.</p>
+        <p><strong>What I led:</strong> $1.2M M&A evaluation — technical due diligence, product-market fit assessment, integration roadmap, commercial model design. Negotiated the acquisition structure and defined the 90-day post-acquisition integration plan.</p>
+        <p><strong>The result:</strong> Krita.ai joined the portfolio. Roadmap accelerated by 18 months. New revenue stream added. Strengthened positioning in pursuits where agentic AI was becoming table stakes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 5 -->
+  <div class="case-card" onclick="toggleCase(this)">
+    <div class="case-header">
+      <div class="case-metric-block">
+        <span class="case-big-num">810K</span>
+        <span class="case-big-unit">Calls/yr</span>
+      </div>
+      <div class="case-info">
+        <span class="case-tag">GovTech · Telecom · SE Asia</span>
+        <div class="case-title">Government & Telecom CX at Scale</div>
+        <div class="case-hook">The product I built underpinned Brunei's national citizen contact centre and a telecom operator achieving 25% CSAT improvement — deployed across regulated SE Asian markets.</div>
+      </div>
+      <span class="case-chevron">▾</span>
+    </div>
+    <div class="case-detail">
+      <div class="case-metrics-row">
+        <div class="case-m-cell"><span class="case-m-num">810K+</span><div class="case-m-label">Annual calls, TD123</div></div>
+        <div class="case-m-cell"><span class="case-m-num">25%</span><div class="case-m-label">CSAT improvement</div></div>
+        <div class="case-m-cell"><span class="case-m-num">30%</span><div class="case-m-label">Faster service delivery</div></div>
+      </div>
+      <div class="case-detail-inner">
+        <p><strong>TD123 — Brunei's national citizen contact centre:</strong> My product underpinned TD123 — launched by His Majesty the Sultan of Brunei, covering 140 government services across 35 departments. From 181K calls in year one to 810K+ annually. KPIs: 95% of calls answered in 10 seconds, 80%+ first call resolution, CSAT 4.1/5.</p>
+        <p><strong>Imagine Telecom:</strong> Enabled Imagine to unify customer data across CRM, billing, and support. Results: 25% CSAT improvement, 30% reduction in service delivery times, 20% increase in upsell success.</p>
+        <p><strong>My role:</strong> I led the product development — platform architecture, workflow engine, feedback integration, omnichannel model. BCT's implementation team handled deployment with account-specific configuration.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-cta">
+    <div class="cta-text">Want to discuss any of these in depth?</div>
+    <div class="cta-buttons">
+      <a href="https://wa.me/971527320022?text=Hi%20Anirudh%2C%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect." class="btn btn-gold">WhatsApp Me</a>
+      <a href="mailto:anirudhsriraman@gmail.com" class="btn btn-outline">Email Me</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE: ON AI ══ -->
+<div class="page" id="page-ai">
+  <div class="page-header">
+    <span class="eyebrow">03 — On Building AI</span>
+    <h2 class="page-title">Four lessons. Two frameworks.</h2>
+    <p class="page-sub">I've built AI that worked and watched AI fail — sometimes my own. The failures taught me more. Most enterprise AI fails because the organisation wasn't ready to absorb it.</p>
+  </div>
+
+  <div class="ai-lesson-card">
+    <span class="lesson-num">Lesson 01 · Adoption</span>
+    <div class="lesson-title">The demo is not the product</div>
+    <div class="lesson-body">At a large regional bank, our AI Q&A feature landed brilliantly in the executive demo. Usage dropped to near zero after week two. <strong>Executive demos optimise for wow. Daily workflows optimise for reliability and fit with existing routines.</strong> I redesigned every subsequent deployment around saved query templates, weekly reporting cadences, and insight ownership mapping — not the demo moment.</div>
+  </div>
+
+  <div class="ai-lesson-card">
+    <span class="lesson-num">Lesson 02 · Trust</span>
+    <div class="lesson-title">Black-box AI gets overridden. Always.</div>
+    <div class="lesson-body">CX teams couldn't trust AI-generated insights because the system couldn't explain its reasoning in terms that mapped to their KPIs. They went back to Excel. <strong>Explainability isn't a nice-to-have — it's the condition for adoption.</strong> I now build human-in-the-loop workflows into AI feature specs before a line of code is written.</div>
+  </div>
+
+  <div class="ai-lesson-card">
+    <span class="lesson-num">Lesson 03 · Readiness</span>
+    <div class="lesson-title">AI readiness is organisational, not technical</div>
+    <div class="lesson-body">We brought a Level 5 AI solution to a Level 2 organisation. Their data discipline and change management bandwidth couldn't absorb it — not because the product was wrong, but because the sequencing was. <strong>I now run a CX maturity assessment before scoping any AI features.</strong> The question isn't "can the technology do this" — it's "can this team act on what it surfaces."</div>
+  </div>
+
+  <div class="ai-lesson-card">
+    <span class="lesson-num">Lesson 04 · Governance</span>
+    <div class="lesson-title">Ship fast, govern early</div>
+    <div class="lesson-body">We built a custom Arabic NLP model — and the governance layer was what made it trustworthy. HumInt, our in-house annotation pipeline, enforced dual-annotator consensus and IRR-based quality gates on every data point before it entered training. <strong>The model was only as good as the data — and the data was only as good as the process governing it.</strong> I apply the same logic to all AI features today: move fast on the capability, but own the governance layer — accuracy thresholds, hallucination rate limits, human review workflows — before GA launch, not after a client complaint.</div>
+  </div>
+
+  <!-- Framework -->
+  <div style="padding: 24px 20px 8px;">
+    <span class="section-label">Frameworks I built</span>
+  </div>
+
+  <div class="fw-block" onclick="toggleFW(this)">
+    <div class="fw-header">
+      <div>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:4px;">Tool 01 · Pre-Deployment</span>
+        <div class="fw-title">AI-CX Client Readiness Diagnostic</div>
+      </div>
+      <span class="fw-chevron">▾</span>
+    </div>
+    <div class="fw-content">
+      <p style="font-size:13px;color:var(--text-dim);line-height:1.7;margin:16px 0 12px;">A 5-dimension discovery framework that determines which AI product tier a GCC enterprise client is ready to deploy — before a contract is signed. Built from 40+ enterprise deployments across BFSI, GovTech, and Telecom.</p>
+
+      <!-- Tier explainer -->
+      <div style="margin-bottom:20px;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;">What the tiers mean</span>
+        <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);">
+          <div style="background:var(--surface2);padding:10px 12px;display:flex;gap:10px;align-items:baseline;">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);min-width:52px;flex-shrink:0;">Tier A</span>
+            <span style="font-size:12px;color:var(--text-dim);line-height:1.4;"><strong style="color:var(--text-mid);">Feedback + Analytics</strong> — Collect feedback, run NLP, view dashboards. Good for organisations just starting to centralise CX data.</span>
+          </div>
+          <div style="background:var(--surface2);padding:10px 12px;display:flex;gap:10px;align-items:baseline;">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);min-width:52px;flex-shrink:0;">Tier B</span>
+            <span style="font-size:12px;color:var(--text-dim);line-height:1.4;"><strong style="color:var(--text-mid);">+ Workflow Automation</strong> — Feedback triggers automated recovery actions. A detractor score fires a DTWorks ticket. Requires defined processes to automate.</span>
+          </div>
+          <div style="background:var(--surface2);padding:10px 12px;display:flex;gap:10px;align-items:baseline;">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);min-width:52px;flex-shrink:0;">Tier C</span>
+            <span style="font-size:12px;color:var(--text-dim);line-height:1.4;"><strong style="color:var(--text-mid);">+ Natural Language Q&A</strong> — Analysts ask questions of the feedback corpus in plain English. Only valuable if the team has the data literacy to interrogate it.</span>
+          </div>
+          <div style="background:var(--surface2);padding:10px 12px;display:flex;gap:10px;align-items:baseline;">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);min-width:52px;flex-shrink:0;">Tier D</span>
+            <span style="font-size:12px;color:var(--text-dim);line-height:1.4;"><strong style="color:var(--text-mid);">+ Agentic AI</strong> — AI acts autonomously: routes, responds, escalates without human initiation. Requires organisational trust, leadership accountability, and mature data governance.</span>
+          </div>
+        </div>
+      </div>
+
+      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;">5 dimensions scored Low / Medium / High</span>
+      <div class="dim-list">
+        <div class="dim-item"><span class="dim-tag">Data</span><span class="dim-desc">Feedback centralised, Arabic handled, real-time accessible — not just collected</span></div>
+        <div class="dim-item"><span class="dim-tag">Technology</span><span class="dim-desc">Integration capability, DESC ISR / PDPL compliance, cloud vs. on-prem constraints</span></div>
+        <div class="dim-item"><span class="dim-tag">Process</span><span class="dim-desc">Closed-loop mechanism exists, cross-functional handoffs defined and followed</span></div>
+        <div class="dim-item"><span class="dim-tag">People</span><span class="dim-desc">CX team can self-serve data, has authority to act on insights — not just view them</span></div>
+        <div class="dim-item"><span class="dim-tag">Leadership</span><span class="dim-desc">Named executive sponsor, CX tied to revenue KPIs — not just tracked and reported</span></div>
+      </div>
+
+      <div class="gate-list" style="margin-top:16px;">
+        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:10px;">Critical gates — a single failure caps the tier</span>
+        <div class="gate-item"><span class="gate-badge">Tier B</span><span class="gate-text">Process must be Medium — you cannot automate a process that hasn't been defined</span></div>
+        <div class="gate-item"><span class="gate-badge">Tier C</span><span class="gate-text">People must be High — natural language Q&A becomes shelf-ware if the team lacks the literacy to interrogate it</span></div>
+        <div class="gate-item"><span class="gate-badge">Tier D</span><span class="gate-text">Leadership must be High — autonomous AI without an accountable executive sponsor is a governance failure waiting to happen</span></div>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);font-style:italic;line-height:1.6;margin-top:14px;opacity:0.7;">The most important rule: score what the client demonstrates, not what they claim. Every client believes they are more ready than they are. A wrong tier recommendation at the sale becomes a failed implementation six months later.</p>
+    </div>
+  </div>
+
+  <!-- ROI Model -->
+  <div class="roi-block">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:8px;">Tool 02 · Commercial Justification</span>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">AI-CX ROI Model — GCC Enterprise</div>
+    <p style="font-size:13px;color:var(--text-dim);line-height:1.7;margin-bottom:16px;">Three-category ROI framework for CFO conversations. Illustrated for a 500K-customer GCC bank deploying Dropthought + Krita.ai + DTWorks.</p>
+    <div class="roi-stats-row">
+      <div class="roi-stat-cell"><span class="roi-stat-num">324%</span><div class="roi-stat-label">Year 1 ROI base case</div></div>
+      <div class="roi-stat-cell"><span class="roi-stat-num">2.8mo</span><div class="roi-stat-label">Payback period</div></div>
+      <div class="roi-stat-cell"><span class="roi-stat-num">121%</span><div class="roi-stat-label">Worst case ROI</div></div>
+    </div>
+    <div class="roi-table-wrap">
+      <table class="roi-table">
+        <thead>
+          <tr><th>Value Category</th><th>Worst</th><th>Base</th><th>Best</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Retention Value<small>AI churn flagging + automated recovery</small></td>
+            <td>$600K</td><td>$1.2M</td><td>$1.8M</td>
+          </tr>
+          <tr>
+            <td>Operational Value<small>1.2 FTE freed from manual reporting</small></td>
+            <td>$27K</td><td>$54K</td><td>$68K</td>
+          </tr>
+          <tr class="total">
+            <td>Total Annual Benefit</td>
+            <td>$627K</td><td>$1.25M</td><td>$1.87M</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="roi-note">Illustrative model based on GCC BFSI benchmarks. Built to show how to frame AI ROI across three value categories — not a validated client result.</p>
+  </div>
+
+  <div class="page-cta">
+    <div class="cta-text">Building AI in GCC enterprise? Let's compare notes.</div>
+    <div class="cta-buttons">
+      <a href="https://wa.me/971527320022" class="btn btn-gold">WhatsApp Me</a>
+      <a href="#" class="btn btn-outline" onclick="showPage('cases',document.querySelectorAll('.tab-btn')[1]);return false;">See Case Studies</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE: PORTFOLIO ══ -->
+<div class="page" id="page-portfolio">
+  <div class="page-header">
+    <span class="eyebrow">04 — Portfolio Governance</span>
+    <h2 class="page-title">How I govern a product portfolio</h2>
+    <p class="page-sub">Multiple products. Significant capital allocation. Build, buy, and kill decisions — made through a formal governance framework, not gut feel.</p>
+  </div>
+
+  <div class="gov-card">
+    <span class="gov-tag">Governance Structure</span>
+    <div class="gov-title">CEO-approved framework — not ad hoc decisions</div>
+    <div class="gov-body">Portfolio governance operated within the BCT Product Policy — a CEO-approved framework defining lifecycle stages, RACI authorities, and formal approval checkpoints. I implemented quarterly Business Performance Reviews, formal investment cases for all strategic decisions, and epic threshold governance: <strong>any initiative over $50K required portfolio-level approval.</strong> Below that, PMs had authority. Above it, I presented a written business case to the EVP and CEO.</div>
+  </div>
+
+  <div class="gov-card">
+    <span class="gov-tag">Strategic Prioritisation · COVID</span>
+    <div class="gov-title">Three-horizon thesis — holding conviction through a crisis</div>
+    <div class="horizon-grid">
+      <div class="horizon-cell">
+        <span class="horizon-label">H1 · Now</span>
+        <div class="horizon-title">DT Smartworks</div>
+        <div class="horizon-body">COVID contact tracing built on existing IP. 10 universities adopted. 5 converted to Dropthought.</div>
+      </div>
+      <div class="horizon-cell">
+        <span class="horizon-label">H2 · Mid</span>
+        <div class="horizon-title">Platform demand</div>
+        <div class="horizon-body">API work funded alongside Smartworks. $1.5M reallocated from $6M annual budget.</div>
+      </div>
+      <div class="horizon-cell">
+        <span class="horizon-label">H3 · Long</span>
+        <div class="horizon-title">Services growth</div>
+        <div class="horizon-body">Thesis: services demand would grow post-COVID. Held conviction. Thesis played out as modelled.</div>
+      </div>
+    </div>
+    <div class="gov-body">When COVID collapsed near-term demand, I presented a three-horizon investment thesis to the EVP rather than pivoting strategy. Made a precise portfolio reallocation — <strong>50/50 engineering split</strong> between Smartworks and Dropthought API work. The thesis played out exactly as modelled.</div>
+  </div>
+
+  <div class="gov-card">
+    <span class="gov-tag">Kill Decision · Pulse</span>
+    <div class="gov-title">The $10M framing that moved the board</div>
+    <div class="gov-body">Tracked Pulse's performance across three consecutive quarters: 75% of proposals failing at demo, wins concentrated in low-margin India accounts. I formally commissioned a competitive analysis — not gut feel, a written brief with a structured output. Finding: matching incumbents (Sprinklr, Brandwatch) required <strong>$10M per year over five years — 167% of the entire portfolio budget.</strong> That single framing moved the board. Resources reallocated to DTWorks Facilities Management market entry.</div>
+  </div>
+
+  <div class="gov-card">
+    <span class="gov-tag">Stakeholder Management</span>
+    <div class="gov-title">Four audiences, one retirement decision</div>
+    <div class="gov-body">The Pulse retirement required managing four groups simultaneously. <strong>The board:</strong> sunk cost reframed against future investment requirements. <strong>Sales:</strong> specific expectation set — 50% increase in Dropthought RFPs by Q1 2024. <strong>Engineering:</strong> credible redeployment path shown — DTWorks and Facilities Management roadmap. <strong>Clients:</strong> migration plan via account managers. The 50% RFP increase was met. Win rates improved. Engineering capacity accelerated a new market entry.</div>
+  </div>
+
+  <div class="page-cta">
+    <div class="cta-text">Looking for a product leader who can own a portfolio?</div>
+    <div class="cta-buttons">
+      <a href="resume.html" class="btn btn-gold">View Full Resume</a>
+      <a href="mailto:anirudhsriraman@gmail.com" class="btn btn-outline">Email Me</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE: HOW I THINK ══ -->
+<div class="page" id="page-think">
+  <div class="page-header">
+    <span class="eyebrow">05 — How I Think</span>
+    <h2 class="page-title">Thinking made visible</h2>
+    <p class="page-sub">Three tracks — change management, frameworks I've built, and how I use analytics to make decisions.</p>
+  </div>
+
+  <div class="think-tabs">
+    <button class="think-tab active" onclick="showThink('change',this)">Change</button>
+    <button class="think-tab" onclick="showThink('frameworks',this)">Frameworks</button>
+    <button class="think-tab" onclick="showThink('analytics',this)">Analytics</button>
+    <button class="think-tab" onclick="showThink('leadership',this)">Leadership</button>
+  </div>
+
+  <!-- Change Management -->
+  <div class="think-panel active" id="think-change">
+    <div class="think-card">
+      <span class="think-tag">Waterfall → Agile</span>
+      <div class="think-title">Changing how teams ship</div>
+      <div class="think-body">I led the transition from waterfall to sprint-based Agile — introducing two-track sprint planning, staggered engineering cycles, and structured backlog governance with explicit go/no-go gates. <strong>50% improvement in development velocity.</strong> The structural shift also changed culture: PMs stopped taking requirements and started defending prioritisation decisions with data.</div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Design Thinking</span>
+      <div class="think-title">Embedding evidence into design decisions</div>
+      <div class="think-body">Restructured the team into journey-aligned pods. Established a quarterly persona cadence where PMs presented updated client insights to designers, engineers, and presales. Over time the internal language shifted: teams stopped arguing about what they believed users wanted and started asking what the evidence showed. <strong>That shift is the clearest sign design thinking had become embedded, not performative.</strong></div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">AI Adoption</span>
+      <div class="think-title">Automating the work nobody wanted to do</div>
+      <div class="think-body">Introduced AI tooling to automate three high-friction tasks: user research analysis, FAQ documentation updates, and sprint release notes. These were unglamorous workflow improvements that freed the team to focus on decisions only humans could make. Also used AI-assisted QA during a critical delivery — <strong>recovered three weeks of timeline without adding headcount.</strong></div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Culture</span>
+      <div class="think-title">Making CX everyone's accountability</div>
+      <div class="think-body">When I audited our NPS program, CS was selectively excluding accounts they believed would score poorly — protecting their response rate OKR at the cost of program integrity. <strong>Established universal distribution as non-negotiable.</strong> Decoupled response rate from CS performance metrics. Retention, NPS, ease-of-use scores, and the BAU metric embedded as shared OKRs across CS, product, and engineering.</div>
+    </div>
+  </div>
+
+  <!-- Frameworks -->
+  <div class="think-panel" id="think-frameworks">
+    <div class="think-card">
+      <span class="think-tag">DEAR Framework</span>
+      <div class="think-title">Predicting churn 6 months before it happens</div>
+      <div class="think-body">Built the DEAR framework — Deployment, Engagement, Adoption, ROI — as the leading indicator model for client health. Weights derived from correlating scores against actual renewal outcomes. <strong>Clients with healthy deployment scores 6 months before renewal had 15% higher gross renewal rates.</strong> CS analysts had a commercially grounded reason to act early — not wait for the renewal conversation.</div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">CS Analyst Framework · X/O Model</span>
+      <div class="think-title">Six ways to turn CX data into decisions</div>
+      <div class="think-body">I built a structured framework for CS analysts to move from raw feedback to action — based on six analysis patterns:
+        <br><br>
+        <strong>X Why</strong> — find something in operational data (O-data) and look for an explanation in experience data (X-data). Why did CSAT drop this quarter? Look at what customers said.
+        <br><br>
+        <strong>O Drivers</strong> — find something in X-data and identify the operational situation causing it. High effort scores — is it a process failure, a system failure, or a staffing issue?
+        <br><br>
+        <strong>X&O Predict</strong> — build projections based on combined X and O data. Churn likelihood scores built from both NPS trends and usage behaviour.
+        <br><br>
+        <strong>X&O Personalise</strong> — adjust how you treat customers based on a combination of X and O signals. A VIP detractor with declining usage gets a different recovery action than a new account with a low score.
+        <br><br>
+        <strong>X&O Alert</strong> — send proactive alerts based on combined signals. When NPS drops and usage falls simultaneously, fire a CS intervention — don't wait for the renewal conversation.
+        <br><br>
+        <strong>X Value</strong> — measure the value of improving experiences by examining the impact on business results. A 5-point NPS improvement in the onboarding journey — what did it do to 90-day retention?
+        <br><br>
+        <strong>The framework gave every analyst a shared vocabulary</strong> — instead of "here's some feedback," the output became "here's an O Driver finding, here's the X-data that explains it, and here's the X&O Alert we should fire before this account churns."
+      </div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">BAU North Star</span>
+      <div class="think-title">Defining what good actually looks like</div>
+      <div class="think-body">Personally defined Dropthought's North Star: a Best Active User identifies and shares an insight consumed by 5+ people in 30 days, leading to 3+ documented improvements in a quarter. Chose this because it captured the full value chain — not just usage, but insight generation, sharing, and action. <strong>Gave product and CS a common language for client health at the user level, not just the account level.</strong></div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Three-Layer Metrics Architecture</span>
+      <div class="think-title">Connecting CX signals to commercial outcomes</div>
+      <div class="think-body">Designed a three-layer architecture: signal quality (response rate, volume) → experience quality (NPS, CSAT, verbatim themes) → business outcomes (GRR, NRR, expansion revenue). Built Tableau reporting connecting all three layers into a single leadership view. <strong>CX programs lose organisational credibility when metrics are reported in isolation.</strong> Making the connection to renewal rate turned CX metrics from a reporting function into a strategic investment input.</div>
+    </div>
+  </div>
+
+  <!-- Analytics -->
+  <div class="think-panel" id="think-analytics">
+    <div class="think-card">
+      <span class="think-tag">Mixpanel · Engagement Funnel Design</span>
+      <div class="think-title">Defining what an engaged user actually looks like</div>
+      <div class="think-body">Before implementing Mixpanel I had to answer a harder question: what does product engagement actually mean for a CX analytics platform? I defined a four-stage funnel — first-time, new, ordinary, and engaged — with specific behavioural criteria for each transition. An engaged user logged in every weekday, spent 30+ minutes weekly reviewing results, and responded to at least 5% of feedback received. <strong>Without this definition, Mixpanel would have measured activity. With it, it measured value delivery.</strong></div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Totango · Health Scoring</span>
+      <div class="think-title">Predicting renewal at the user level</div>
+      <div class="think-body">Built an eight-dimension client health score in Totango with weights derived from correlating scores against actual renewal outcomes. Correlated all three survey touchpoints against Totango scores at the individual user level — identifying users who gave high NPS but showed declining engagement. <strong>That pattern predicted silent churn that survey data alone would never surface. Retention moved from 70% to 96%.</strong></div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Tableau · Executive Reporting</span>
+      <div class="think-title">One view that connected CX to revenue</div>
+      <div class="think-body">Built Tableau reporting that connected all three metric layers — signal, experience, and business outcomes — into a single leadership dashboard presented directly to clients as a strategic advisory tool. The goal: a CFO should be able to look at one screen and understand how NPS movement connects to renewal rate. <strong>Institutionalised across the CS insights team as a repeatable methodology</strong> — not a one-off executive presentation.</div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Data Integrity</span>
+      <div class="think-title">Fixing the measurement before trusting the numbers</div>
+      <div class="think-body">Analytics is only as good as the data feeding it. When I audited Dropthought's NPS program I found CS was selectively excluding accounts likely to score poorly — contaminating the baseline. Fixed the distribution methodology first, established IRR-based quality gates on the NLP annotation pipeline, and built reconciliation checks between CRM data and survey responses. <strong>The principle: measure what's real, not what looks good. Every framework I built assumes the data has been cleaned first.</strong></div>
+    </div>
+  </div>
+
+  <!-- Leadership -->
+  <div class="think-panel" id="think-leadership">
+    <div class="think-card">
+      <span class="think-tag">Growing PMs · Career Ladder</span>
+      <div class="think-title">A structured system for PM growth — not just promotions</div>
+      <div class="think-body">I built a five-dimension career ladder for the product team covering Insight (customer focus, analytics, competitive intelligence), Strategy (roadmap rationale, alignment), Execution (problem articulation, shipping cadence), Outcomes (customer and business impact), and Leadership behaviours (communication, collaboration, decisiveness). Every PM was rated annually across all dimensions with explicit level descriptors — Associate PM through Principal PM. <strong>The ladder made growth visible and removed ambiguity about what "good" looked like at each level.</strong> All three PMs who were rated and developed against it were promoted to Senior PM.</div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Growing PMs · Ownership Model</span>
+      <div class="think-title">Trust with structure — not trust without guardrails</div>
+      <div class="think-body">I built a tiered ownership model: S and M features were fully in the PM's hands with no approval needed. L, XL, and XXL required a written Confluence brief covering customer impact, strategic fit, solution uniqueness, and emotional delight for the user — and my sign-off. The threshold was engineering effort, not seniority. <strong>This gave junior PMs real authority from day one</strong> while creating a forcing function for structured thinking on high-stakes decisions. Early submissions came back for rework. I held the standard deliberately. Over time the quality of submissions improved measurably — not because I lowered the bar, but because the team learned what a good answer actually looked like.</div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Culture · Psychological Safety</span>
+      <div class="think-title">Zero engineering attrition during the Great Resignation</div>
+      <div class="think-body">When BCT's engineering org was hit hard, I held one-on-ones with all six team leads in week one. My message was simple: <em>"I'm not pretending to be a CTO. I'm here to unblock you and prioritise ruthlessly. What do you need?"</em> I earned credibility not by bluffing technical depth but by making their decisions faster. <strong>Zero attrition across 40 engineers over 15 months</strong> — against an industry average of 20%+ turnover. The collaboration rituals I introduced outlasted my tenure; the incoming VP adopted and scaled them.</div>
+    </div>
+    <div class="think-card">
+      <span class="think-tag">Culture · Team Identity</span>
+      <div class="think-title">Loyalty built on growth, not compensation</div>
+      <div class="think-body">The loyalty within my team was never driven by salary. It was driven by growth, trust, and the environment we built together. People stayed far longer than they initially planned — not because they couldn't get better offers, but because working on the team felt like real development. <strong>One direct report joined as an Associate PM, stayed six years, was promoted to PM, and described the experience as "the kind of manager who lets you take risks, make mistakes, and grow — while quietly ensuring you never fall."</strong> That's the culture I build deliberately, not by accident.</div>
+    </div>
+  </div>
+
+  <div class="page-cta">
+    <div class="cta-text">These frameworks are deployable. Want to talk through how?</div>
+    <div class="cta-buttons">
+      <a href="https://wa.me/971527320022" class="btn btn-gold">WhatsApp Me</a>
+      <a href="#" class="btn btn-outline" onclick="showPage('ai',document.querySelectorAll('.tab-btn')[2]);return false;">See AI Section</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE: PEOPLE ══ -->
+<div class="page" id="page-people">
+  <div class="page-header">
+    <span class="eyebrow">06 — From the Team</span>
+    <h2 class="page-title">What it's like to work with me</h2>
+    <p class="page-sub">Four voices — each speaking to a different dimension of what a hiring manager needs to know.</p>
+  </div>
+
+  <div class="testimonial-card">
+    <span class="t-problem">On building product org discipline</span>
+    <div class="t-quote">He doesn't just build products — he builds people. Any organization would be incredibly fortunate to have him — not just as a leader, but as a force multiplier for people and culture.</div>
+    <div class="t-person">
+      <div class="t-avatar">AP</div>
+      <div>
+        <div class="t-name">Aishwarya Prasad</div>
+        <div class="t-role">Product Manager, S&P Global Mobility · Ex-PM, Dropthought</div>
+        <span class="t-rel">Direct report · 6 years</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-card">
+    <span class="t-problem">On data-driven decisions & AI thinking</span>
+    <div class="t-quote">He uses data not as a checkbox, but as a genuine tool for thinking. He has a knack for spotting patterns and insights that most people would miss, and he'd use those findings to steer us toward decisions that were sharper and more grounded.</div>
+    <div class="t-person">
+      <div class="t-avatar">RD</div>
+      <div>
+        <div class="t-name">Ranjita Das</div>
+        <div class="t-role">Senior Product Manager · Responsible AI Advocate</div>
+        <span class="t-rel">Direct report</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-card">
+    <span class="t-problem">On product-commercial alignment</span>
+    <div class="t-quote">He moved naturally across product, engineering and sales — bringing technical and product knowledge directly into sales, helping shape proposals that were credible and compelling.</div>
+    <div class="t-person">
+      <div class="t-avatar">SP</div>
+      <div>
+        <div class="t-name">Shibani Philip</div>
+        <div class="t-role">Director, CX Consulting</div>
+        <span class="t-rel">Cross-functional colleague</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-card">
+    <span class="t-problem">On enterprise execution & engineering partnership</span>
+    <div class="t-quote">He consistently drove product vision to design execution in complex, constrained environments — making clear wins vs. trade-offs, aligning teams, and keeping focus on needed outcomes. Anirudh operates at a senior leadership level and is someone I would trust to lead product in any organization.</div>
+    <div class="t-person">
+      <div class="t-avatar">RB</div>
+      <div>
+        <div class="t-name">Roy Barman</div>
+        <div class="t-role">CTO & VP of AI and Software Engineering</div>
+        <span class="t-rel">Cross-functional partner · Bahwan CyberTek</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-cta">
+    <div class="cta-text">Want to speak to any of these people directly?</div>
+    <div class="cta-buttons">
+      <a href="mailto:anirudhsriraman@gmail.com" class="btn btn-gold">Request References</a>
+      <a href="https://www.linkedin.com/in/anirudh-sriraman-55471118/" target="_blank" class="btn btn-outline">LinkedIn →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE: CONTACT ══ -->
+<div class="page" id="page-contact">
+
+  <div class="contact-hero">
+    <h2 class="contact-name">Let's talk.</h2>
+    <p class="contact-tagline">Director / Senior Director of Product · B2B SaaS · AI/ML platforms · GCC and global enterprise</p>
+    <div class="contact-btns">
+      <a href="mailto:anirudhsriraman@gmail.com" class="contact-btn contact-btn-primary">✉ Email Me</a>
+      <a href="https://wa.me/971527320022?text=Hi%20Anirudh%2C%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect." class="contact-btn contact-btn-wa">💬 WhatsApp</a>
+      <a href="https://www.linkedin.com/in/anirudh-sriraman-55471118/" target="_blank" class="contact-btn contact-btn-li">in LinkedIn</a>
+      <a href="resume.html" class="contact-btn contact-btn-resume">↓ View Resume</a>
+    </div>
+  </div>
+
+  <div class="contact-details">
+    <div class="contact-detail-row">
+      <span class="detail-ico">📍</span>
+      <span>Dubai, UAE · Open to GCC opportunities</span>
+    </div>
+    <div class="contact-detail-row">
+      <span class="detail-ico">📞</span>
+      <span>+971 52 732 0022</span>
+    </div>
+    <div class="contact-detail-row">
+      <span class="detail-ico">✉</span>
+      <span>anirudhsriraman@gmail.com</span>
+    </div>
+    <div class="contact-detail-row">
+      <span class="detail-ico">🎯</span>
+      <span>Director · Sr. Director Product · B2B SaaS · AI/CX · GCC</span>
+    </div>
+  </div>
+
+  <div class="cert-wrap">
+    <span class="section-label" style="padding-top:8px;display:block;">Certifications</span>
+    <div class="cert-row">
+      <span class="cert-pill">CCXP</span>
+      <span class="cert-pill">SAFe 6 LPM</span>
+      <span class="cert-pill">AWS Cloud Practitioner</span>
+      <span class="cert-pill">AWS AI Practitioner</span>
+      <span class="cert-pill">DESC ISR</span>
+      <span class="cert-pill">ISO 27001</span>
+    </div>
+  </div>
+
+  <div class="contact-details" style="border-top:1px solid var(--border);">
+    <span class="section-label">Education</span>
+    <div class="contact-detail-row">
+      <span class="detail-ico">🎓</span>
+      <div>
+        <div style="font-size:13px;font-weight:700;">Master of Engineering Management</div>
+        <div style="font-size:11px;color:var(--text-dim);">Dartmouth College · Thayer & Tuck · 2010–2012</div>
+      </div>
+    </div>
+    <div class="contact-detail-row">
+      <span class="detail-ico">🎓</span>
+      <div>
+        <div style="font-size:13px;font-weight:700;">B.E. Electrical & Electronics Engineering</div>
+        <div style="font-size:11px;color:var(--text-dim);">Anna University · 2003–2007</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function toggleCase(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.case-card.open').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+function toggleFW(block) {
+  block.classList.toggle('open');
+}
+
+function showThink(id, btn) {
+  document.querySelectorAll('.think-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.think-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('think-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+</script>
+</body>
+</html>

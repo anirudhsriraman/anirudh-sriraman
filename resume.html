@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anirudh Sriraman — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2ec;
+    --sand: #e8e2d6;
+    --gold: #c8a84b;
+    --rust: #b85c2c;
+    --slate: #4a5568;
+    --white: #ffffff;
+    --rule: 1px solid rgba(14,14,14,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 48px;
+    background: rgba(245,242,236,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: var(--rule);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.12em;
+    color: var(--slate); text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-right { display: flex; gap: 20px; align-items: center; }
+  .nav-back {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--ink); text-decoration: none; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--gold); }
+  .nav-download {
+    padding: 10px 24px;
+    background: var(--ink); color: var(--paper);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    border: 2px solid var(--ink);
+    transition: all 0.25s;
+  }
+  .nav-download:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+  /* MAIN LAYOUT */
+  .resume-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 120px 48px 80px;
+  }
+
+  /* HEADER */
+  .resume-header {
+    padding-bottom: 40px;
+    border-bottom: 3px solid var(--ink);
+    margin-bottom: 48px;
+  }
+  .resume-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px; font-weight: 900; line-height: 1;
+    color: var(--ink); margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+  .resume-name span { color: var(--gold); }
+  .resume-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--slate); margin-bottom: 20px;
+  }
+  .resume-contact {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; color: var(--slate);
+    letter-spacing: 0.06em;
+  }
+  .resume-contact a { color: var(--gold); text-decoration: none; }
+  .resume-contact a:hover { text-decoration: underline; }
+
+  /* SUMMARY */
+  .resume-summary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+  }
+  .resume-summary p {
+    font-size: 15px; line-height: 1.8; font-weight: 300;
+    color: rgba(245,242,236,0.85);
+  }
+  .resume-summary strong { color: var(--gold); font-weight: 500; }
+
+  /* SECTIONS */
+  .resume-section { margin-bottom: 48px; }
+  .section-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: var(--rule);
+  }
+
+  /* EXPERIENCE BLOCK */
+  .exp-block { margin-bottom: 40px; }
+  .exp-block:last-child { margin-bottom: 0; }
+
+  .exp-header {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 16px; align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .exp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--ink);
+  }
+  .exp-dates {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--slate); letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .exp-company {
+    font-size: 13px; color: var(--gold); font-weight: 500;
+    margin-bottom: 4px;
+    font-family: 'DM Mono', monospace; letter-spacing: 0.06em;
+  }
+  .exp-report {
+    font-size: 12px; color: var(--slate); font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  /* SUB-ROLE */
+  .sub-role {
+    margin-bottom: 16px;
+    padding-left: 16px;
+    border-left: 2px solid var(--gold);
+  }
+  .sub-role-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 10px;
+  }
+  .bullet-list { list-style: none; }
+  .bullet-list li {
+    font-size: 13px; line-height: 1.7; color: var(--slate);
+    padding: 4px 0 4px 16px;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--gold); font-size: 11px;
+  }
+  .bullet-list li strong { color: var(--ink); font-weight: 500; }
+
+  /* ACHIEVEMENTS / EDUCATION — two col */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .col-block {
+    padding-right: 40px;
+    border-right: var(--rule);
+  }
+  .col-block:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+
+  .ach-item {
+    display: flex; gap: 12px; align-items: baseline;
+    padding: 10px 0;
+    border-bottom: var(--rule);
+    font-size: 13px; color: var(--slate); line-height: 1.5;
+  }
+  .ach-item:last-child { border-bottom: none; }
+  .ach-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .edu-item { padding: 12px 0; border-bottom: var(--rule); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .edu-school {
+    font-size: 13px; color: var(--gold);
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.06em; margin-bottom: 2px;
+  }
+  .edu-years {
+    font-size: 12px; color: var(--slate);
+    font-family: 'DM Mono', monospace; letter-spacing: 0.06em;
+  }
+
+  /* METRICS ROW */
+  .metrics-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--sand);
+    margin-bottom: 48px;
+  }
+  .metric-cell {
+    padding: 24px 20px;
+    border-right: var(--rule);
+    text-align: center;
+  }
+  .metric-cell:last-child { border-right: none; }
+  .metric-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 900; color: var(--ink);
+    line-height: 1;
+  }
+  .metric-num em { color: var(--gold); font-style: normal; }
+  .metric-lbl {
+    font-size: 11px; color: var(--slate); margin-top: 6px; line-height: 1.4;
+  }
+
+  /* PRINT */
+  @media print {
+    nav { display: none; }
+    .resume-wrap { padding: 40px; }
+    body { background: white; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .resume-wrap { padding: 100px 20px 60px; }
+    .resume-name { font-size: 36px; }
+    .exp-header { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .col-block { border-right: none; padding: 0 0 32px 0; border-bottom: var(--rule); }
+    .col-block:last-child { padding-top: 32px; }
+    .metrics-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Anirudh Sriraman</a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-back">← Portfolio</a>
+    <a href="Anirudh_Sriraman_Resume_AI_Product_Leader.pdf" download class="nav-download">Download PDF</a>
+  </div>
+</nav>
+
+<div class="resume-wrap">
+
+  <!-- HEADER -->
+  <div class="resume-header">
+    <h1 class="resume-name">Anirudh <span>Sriraman</span></h1>
+    <div class="resume-title">Director / VP Product · AI-Powered CX · B2B SaaS · GCC</div>
+    <div class="resume-contact">
+      <span>Dubai, UAE</span>
+      <span>+971 52 732 0022</span>
+      <a href="mailto:anirudhsriraman@gmail.com">anirudhsriraman@gmail.com</a>
+      <a href="https://www.linkedin.com/in/anirudh-sriraman-55471118/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="resume-summary">
+    <p>Product executive with <strong>14+ years</strong> of building and scaling multi-product CX B2B SaaS portfolios across the US, Middle East, and Asia. Took an AI-powered CX platform from <strong>zero to $6M ARR</strong> while owning portfolio strategy, org design, and commercial execution for a $350M enterprise. Proven expertise in SAFe-based Agile delivery, PI planning, portfolio governance, and cross-functional team leadership, delivering scalable cloud and AI-driven solutions.</p>
+  </div>
+
+  <!-- KEY METRICS -->
+  <div class="metrics-bar">
+    <div class="metric-cell">
+      <div class="metric-num">$<em>6</em>M</div>
+      <div class="metric-lbl">ARR grown from zero</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">96<em>%</em></div>
+      <div class="metric-lbl">Customer retention</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">14<em>→</em>35<em>%</em></div>
+      <div class="metric-lbl">RFP win rate</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">40<em>%</em></div>
+      <div class="metric-lbl">Expansion revenue of ARR</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="resume-section">
+    <div class="section-heading">Professional Experience</div>
+
+    <!-- BCT -->
+    <div class="exp-block">
+      <div class="exp-header">
+        <div class="exp-title">Head, Product Management & Design</div>
+        <div class="exp-dates">2016 – 2026</div>
+      </div>
+      <div class="exp-company">Bahwan CyberTek Inc · Dubai, UAE</div>
+      <div class="exp-report">Reported to EVP (BU Head); reporting line moved to CEO upon EVP's transition</div>
+
+      <div class="sub-role">
+        <div class="sub-role-title">CX Portfolio & Product Leader</div>
+        <ul class="bullet-list">
+          <li>Served on <strong>3-person portfolio leadership team</strong> for CX portfolio (Dropthought, DTWorks, Krita.ai); developed 3-year portfolio vision and strategic investment roadmap guiding <strong>$10M in annual capital</strong></li>
+          <li>Defined strategic themes and portfolio OKRs; portfolio achieved <strong>60–70% of objectives</strong> while maintaining alignment across cross-functional teams</li>
+          <li>Established epic threshold governance ($50K+ requiring portfolio approval), accelerating decision velocity for smaller initiatives while preventing low-ROI investments</li>
+          <li>Built 3-level maturity model assessing Agile/process and UX design capabilities across portfolio; applied quarterly to inform hiring, budget allocation, and transformation roadmaps</li>
+        </ul>
+      </div>
+
+      <div class="sub-role">
+        <div class="sub-role-title">AI & Product Platform Strategy — Dropthought & Krita.ai</div>
+        <ul class="bullet-list">
+          <li>Led <strong>$1.2M M&A evaluation</strong> for AI capability acquisition — accelerated product roadmap by 18 months</li>
+          <li>Launched AI product suite: text analytics, AskDropthought (LLM-powered Q&A), and predictive capabilities (churn, root cause, what-if)</li>
+          <li>Defined AI feature success metrics: <strong>20% enterprise customer AI adoption within 2 months</strong>, time-to-insight reduction from 2–3 days to under 1 hour, $1M ARR from AI capabilities</li>
+          <li>Established AI governance framework: accuracy >85%, hallucination rate <5%, response explainability — with human-in-the-loop workflows for all customer-facing AI features</li>
+          <li>Architected shared service platform consolidating auth, data pipelines, and ML infrastructure across 3 products; <strong>reduced duplicate infrastructure costs by 25%</strong></li>
+        </ul>
+      </div>
+
+      <div class="sub-role">
+        <div class="sub-role-title">Strategic Leadership & Executive Influence — Dropthought</div>
+        <ul class="bullet-list">
+          <li>Led product strategy for enterprise SaaS platform serving <strong>Fortune 500 clients</strong> (Cisco, HP, Adobe) and government entities (MoH Oman, HDB Singapore)</li>
+          <li>Built globally distributed product organization (100+ across US, India, Taiwan, Middle East); established hiring frameworks, career ladders, and performance systems</li>
+          <li>Led regional GTM, Arabic localisation, government engagement, and <strong>DESC ISR & ISO 27001 compliance</strong> across UAE, KSA, and Oman</li>
+          <li>Championed design system initiative — recognized UX inconsistency as a scaling risk; reduced design debt and enabled faster, consistent product iteration</li>
+          <li>Led product briefings with Deloitte during independent audit; discussions directly influenced senior management's decision to invest in the platform</li>
+        </ul>
+      </div>
+
+      <div class="sub-role">
+        <div class="sub-role-title">Commercial Impact & Revenue Growth — Dropthought</div>
+        <ul class="bullet-list">
+          <li>Grew product from <strong>zero to $6M ARR</strong>; developed solutions supporting $25M+ in cross-sell pipeline across vertical sales teams</li>
+          <li>Owned product P&L — revenue targets, margin, and $3M annual budget; reported ARR growth and pipeline contribution directly to CEO and EVP</li>
+          <li>Drove <strong>40% expansion revenue</strong> and maintained <strong>96% customer retention</strong> through customer-centric product enhancements</li>
+          <li>Led deal shaping on $100K–$6M pursuits; increased <strong>RFP win rate from 14% to 35%</strong> by rebuilding presales motion with 27-dimension lead scoring model</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Epiroot -->
+    <div class="exp-block">
+      <div class="exp-header">
+        <div class="exp-title">Co-Founder</div>
+        <div class="exp-dates">2017 – 2019</div>
+      </div>
+      <div class="exp-company">Epiroot · Chennai, India</div>
+      <ul class="bullet-list" style="margin-top:12px">
+        <li>Bootstrapped EdTech ERP for tier 2/3 Indian schools; <strong>acquired 50+ paying customers in year one</strong></li>
+      </ul>
+    </div>
+
+    <!-- Dropthought US -->
+    <div class="exp-block">
+      <div class="exp-header">
+        <div class="exp-title">Senior Manager, AI & Analytics</div>
+        <div class="exp-dates">2012 – 2015</div>
+      </div>
+      <div class="exp-company">Dropthought · Santa Clara, CA</div>
+      <ul class="bullet-list" style="margin-top:12px">
+        <li>Built and scaled ensemble ML capability for enterprise text analytics from concept to production — <strong>~20% improvement in classification precision</strong></li>
+        <li>Built HumInt, an in-house annotation pipeline with automated sentence parsing, dual-annotator consensus workflows, and IRR-based quality gates — <strong>5.4M+ labeled data points, 90% inter-annotator agreement</strong></li>
+        <li>Designed annotator productivity analytics dashboard; <strong>reduced labeling cycle time by 35%</strong></li>
+        <li>Co-developed investor pitch deck with CEO and personally sourced investor introductions — contributed to acquisition outcome; acquirer (BCT) subsequently hired to lead product organisation</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS + EDUCATION -->
+  <div class="two-col">
+    <div class="col-block">
+      <div class="section-heading">Certifications & Achievements</div>
+      <div class="ach-item"><div class="ach-dot"></div><span>CCXP — Certified Customer Experience Professional</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>SAFe 6 Lean Portfolio Manager (Agile at Scale)</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>AWS Certified Cloud Practitioner</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>AWS Certified AI Practitioner</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>DESC ISR Compliance · ISO 27001</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Fastest promotion to Head of Product in BCT's history — recognised for commercial impact and cross-functional leadership</span></div>
+      <div class="ach-item"><div class="ach-dot"></div><span>Nominated for Kellogg Executive Education (AI-Driven Product Strategy) and McCormick certificate (Big Data to Big Profits)</span></div>
+    </div>
+    <div class="col-block">
+      <div class="section-heading">Education</div>
+      <div class="edu-item">
+        <div class="edu-degree">Master of Engineering Management</div>
+        <div class="edu-school">Dartmouth College · Thayer School of Engineering & Tuck School of Business</div>
+        <div class="edu-years">2010 – 2012</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">B.E., Electrical & Electronics Engineering</div>
+        <div class="edu-school">Anna University</div>
+        <div class="edu-years">2003 – 2007</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /resume-wrap -->
+
+</body>
+</html>
