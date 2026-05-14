@@ -29,12 +29,15 @@ const DRY_RUN = process.argv.includes('--dry-run');
 // ─── Required design tokens ───────────────────────────────────────────────────
 
 const REQUIRED_TOKENS = [
-  { name: '--text',        purpose: 'body text' },
-  { name: '--accent',      purpose: 'highlights, links' },
   { name: '--bg',          purpose: 'page background' },
   { name: '--bg-surface',  purpose: 'card/section background' },
-  { name: '--font',        purpose: 'display and body text' },
-  { name: '--font-mono',   purpose: 'monospace / code' },
+  { name: '--text',        purpose: 'body text' },
+  { name: '--text-muted',  purpose: 'secondary text' },
+  { name: '--accent',      purpose: 'highlights, links, teal' },
+  { name: '--accent-light',purpose: 'accent tint for badges' },
+  { name: '--border',      purpose: 'all borders' },
+  { name: '--bg-inverse',  purpose: 'inverse/dark background' },
+  { name: '--text-inverse',purpose: 'text on inverse background' },
 ];
 
 // ─── Component signatures ─────────────────────────────────────────────────────

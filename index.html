@@ -6,22 +6,22 @@
   <title>Anirudh Sriraman - Director / VP Product</title>
   <meta name="description" content="From Customer Signal to Revenue Certainty">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0a0a0a;
-    --bg-surface: #111111;
-    --bg-card: #161616;
-    --border: #2a2a2a;
-    --text: #e8e8e8;
-    --text-muted: #888;
-    --accent: #c8a96e;
-    --accent-dim: #8a6f3e;
-    --green: #4ade80;
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --bg: #F5F0E8;
+    --bg-surface: #FFFFFF;
+    --text: #0A0A0A;
+    --text-muted: #6B6B6B;
+    --accent: #0B6E6E;
+    --accent-light: rgba(11,110,110,0.1);
+    --border: #0A0A0A;
+    --bg-inverse: #0A0A0A;
+    --text-inverse: #FFFFFF;
+    --font: 'Inter', sans-serif;
   }
 
   html { scroll-behavior: smooth; font-size: 16px; }
@@ -33,269 +33,435 @@
     line-height: 1.6;
   }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-  /* Nav */
+  /* NAV */
   .nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,10,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    border-bottom: 1.5px solid var(--border);
     padding: 1rem 0;
   }
-  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-  .nav-brand { font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); font-weight: 700; }
-  .nav-links { list-style: none; display: flex; gap: 2rem; }
-  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+    position: relative;
+  }
+  .nav-left { font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
+  .nav-left strong { font-weight: 700; }
+  .nav-divider { color: var(--text-muted); }
+  .nav-role { font-weight: 400; color: var(--text-muted); }
+  .nav-center { list-style: none; display: flex; gap: 2rem; }
+  .nav-center a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+  .nav-center a:hover { color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-cta {
+    display: inline-block;
+    background: var(--bg-inverse); color: var(--text-inverse);
+    text-decoration: none; padding: 0.5rem 1.25rem;
+    font-size: 0.8125rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; font-size: 1.25rem; color: var(--text); }
+  .nav-mobile-menu {
+    display: none; position: absolute; top: calc(100% + 1rem); right: 0;
+    background: var(--bg-surface); border: 1.5px solid var(--border);
+    list-style: none; padding: 1rem;
+    flex-direction: column; gap: 1rem; min-width: 200px;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a { color: var(--text); text-decoration: none; font-size: 0.9375rem; font-weight: 500; display: block; padding: 0.25rem 0; }
 
-  /* Hero */
-  .hero { padding: 6rem 0 4rem; }
+  /* HERO */
+  .hero { padding: 80px 0; }
+  .hero-grid { display: grid; grid-template-columns: 55fr 45fr; gap: 24px; align-items: start; }
   .availability-badge {
-    display: inline-block; padding: 0.3rem 0.9rem;
-    border: 1px solid var(--border); border-radius: 999px;
-    font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.4rem 1rem; border: 1.5px solid var(--border); border-radius: 999px;
+    font-size: 0.8125rem; font-weight: 500; margin-bottom: 1.5rem;
   }
-  .availability-badge.open { border-color: var(--green); color: var(--green); }
-  .hero-name { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-  .hero-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-  .hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--accent); font-style: italic; margin-bottom: 2rem; max-width: 700px; }
-  .hero-cta { margin-bottom: 2rem; }
-  .hero-cta-primary { font-size: 1rem; color: var(--text); font-weight: 500; margin-bottom: 0.4rem; }
-  .hero-cta-secondary { font-size: 0.9rem; color: var(--accent); }
-  .hero-contact { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-  .hero-contact a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-  .hero-contact a:hover { color: var(--accent); border-color: var(--accent); }
-  .hero-body { max-width: 720px; color: var(--text-muted); }
-  .hero-body p { margin-bottom: 1rem; }
-  .hero-body strong { color: var(--text); }
-
-  /* Section titles */
-  .section-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 3rem; letter-spacing: -0.01em; }
-  section { padding: 5rem 0; border-top: 1px solid var(--border); }
-
-  /* Case Studies */
-  .case-studies-grid { display: grid; gap: 2rem; }
-  .case-study-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 2rem; transition: border-color 0.2s;
+  .badge-dot { color: var(--accent); }
+  .metric-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .metric-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.75rem; border: 1.5px solid var(--border); font-size: 0.875rem;
   }
-  .case-study-card:hover { border-color: var(--accent-dim); }
-  .cs-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
-  .cs-audience { display: flex; gap: 0.4rem; }
-  .audience { font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-mono); }
-  .audience-cpo { border-color: #6366f1; color: #818cf8; }
-  .audience-dx { border-color: #0ea5e9; color: #38bdf8; }
-  .audience-recruiter { border-color: #10b981; color: #34d399; }
-  .cs-metrics { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .metric { font-size: 0.8rem; font-family: var(--font-mono); color: var(--accent); background: rgba(200,169,110,0.08); padding: 0.2rem 0.6rem; border-radius: 4px; }
-  .cs-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
-  .cs-body { color: var(--text-muted); font-size: 0.95rem; }
-  .cs-body p { margin-bottom: 0.75rem; }
-  .cs-body h2, .cs-body h3 { color: var(--text); margin: 1.2rem 0 0.5rem; font-size: 1rem; }
-  .cs-body strong { color: var(--text); }
-  .cs-body ul { padding-left: 1.5rem; margin-bottom: 0.75rem; }
-  .cs-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.2rem; }
-  .tag { font-size: 0.72rem; color: var(--text-muted); background: var(--bg-surface); border: 1px solid var(--border); padding: 0.15rem 0.5rem; border-radius: 4px; }
-
-  /* Frameworks */
-  .frameworks-grid { display: grid; gap: 2rem; }
-  .framework-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 2rem;
+  .pill-value { font-weight: 700; color: var(--accent); }
+  .hero-name { font-size: clamp(48px, 7vw, 72px); font-weight: 800; text-transform: uppercase; line-height: 1.0; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+  .hero-title { font-size: clamp(24px, 3.5vw, 32px); font-weight: 700; color: var(--accent); margin-bottom: 1.25rem; }
+  .hero-tagline { font-size: 1.125rem; color: var(--text-muted); max-width: 520px; margin-bottom: 2rem; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--bg-inverse); color: var(--text-inverse);
+    text-decoration: none; padding: 16px 32px;
+    font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
   }
-  .fw-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.2rem; color: var(--accent); }
-  .fw-body { color: var(--text-muted); font-size: 0.93rem; }
+  .cta-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1.5px solid var(--border); color: var(--text);
+    text-decoration: none; padding: 16px 32px;
+    font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .hero-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .hero-metrics-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .metric-item { display: flex; flex-direction: column; gap: 0.25rem; }
+  .metric-number { font-size: 1.75rem; font-weight: 700; line-height: 1; }
+  .metric-label { font-size: 0.6875rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+
+  /* HERO IMAGE */
+  .hero-right { display: flex; justify-content: flex-end; }
+  .hero-image-wrap { position: relative; width: 380px; height: 460px; }
+  .hero-image-frame {
+    position: absolute; top: 14px; right: -14px;
+    width: 100%; height: 100%;
+    border: 1.5px solid var(--border);
+    background: rgba(11,110,110,0.08);
+    z-index: 0;
+  }
+  .hero-image-wrap img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+  /* CLIENT TICKER */
+  .ticker-row { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.875rem 0; }
+  .ticker-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .ticker-label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); flex-shrink: 0; font-weight: 500; }
+  .ticker-names { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .ticker-name { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+
+  /* SECTIONS */
+  section { padding: 80px 0; }
+  .section-header { margin-bottom: 3rem; }
+  .section-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+  .section-num { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); flex-shrink: 0; font-weight: 500; }
+  .section-rule { flex: 1; height: 1px; background: var(--text-muted); opacity: 0.3; }
+  .section-title { font-size: clamp(32px, 5vw, 48px); font-weight: 700; line-height: 1.1; margin-bottom: 0.75rem; }
+  .section-subtitle { font-size: 1rem; color: var(--text-muted); max-width: 600px; }
+
+  /* CARD */
+  .card { background: var(--bg-surface); border: 1.5px solid var(--border); }
+
+  /* CHARTS */
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 1rem; }
+  .chart-card { padding: 2rem; }
+  .chart-title { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 1.5rem; }
+  .chart-source { font-size: 0.8125rem; color: var(--text-muted); }
+
+  /* RETENTION CHART */
+  .retention-chart { display: flex; flex-direction: column; gap: 1.25rem; }
+  .retention-row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .retention-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem; }
+  .retention-name { font-size: 0.8125rem; font-weight: 500; }
+  .retention-pct { font-size: 0.8125rem; font-weight: 700; }
+  .retention-bar-track { height: 40px; background: var(--bg); border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .retention-bar-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.5rem; }
+  .retention-annotation { font-size: 0.75rem; font-weight: 700; color: var(--bg-surface); }
+
+  /* NLP CHART */
+  .nlp-chart-title { font-size: 1.25rem; font-weight: 600; line-height: 1.4; margin-bottom: 2rem; max-width: 500px; }
+  .nlp-stages { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .nlp-stage { display: flex; flex-direction: column; gap: 0.5rem; }
+  .nlp-stage-header { display: flex; justify-content: space-between; align-items: center; }
+  .nlp-stage-name { font-size: 0.8125rem; font-weight: 600; }
+  .nlp-stage-pct { font-size: 0.8125rem; font-weight: 700; }
+  .nlp-bar-track { height: 12px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
+  .nlp-bar-fill { height: 100%; }
+  .nlp-stage-notes { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 0.25rem; }
+  .nlp-note { font-size: 0.75rem; color: var(--text-muted); }
+  .nlp-governance { font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1rem; }
+
+  /* CX MATURITY */
+  .maturity-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .maturity-subtitle { font-size: 0.9375rem; color: var(--text-muted); margin-bottom: 2rem; }
+  .maturity-tier { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem; border-bottom: 1px solid var(--border); }
+  .maturity-tier-letter { font-size: 3rem; font-weight: 700; color: var(--accent); width: 3rem; text-align: center; flex-shrink: 0; line-height: 1; }
+  .maturity-tier-content { flex: 1; }
+  .maturity-tier-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+  .maturity-tier-desc { font-size: 0.875rem; color: var(--text-muted); }
+  .maturity-tier-tag { font-size: 0.75rem; padding: 0.25rem 0.75rem; border: 1px solid var(--border); flex-shrink: 0; white-space: nowrap; }
+  .maturity-tier-d { background: var(--bg-inverse); border-bottom: none; }
+  .maturity-tier-d .maturity-tier-name { color: var(--text-inverse); }
+  .maturity-tier-d .maturity-tier-desc { color: rgba(255,255,255,0.6); }
+  .maturity-tier-d .maturity-tier-letter { color: var(--accent); }
+  .maturity-tier-d .maturity-tier-tag { border-color: rgba(255,255,255,0.3); color: var(--text-inverse); }
+  .maturity-note { font-size: 0.8125rem; color: var(--text-muted); padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+
+  /* CASE STUDIES */
+  .case-studies-grid { display: grid; gap: 24px; }
+  .case-study-card { background: var(--bg-surface); border: 1.5px solid var(--border); padding: 2rem; }
+  .cs-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+  .cs-metric-badge { font-size: 0.75rem; font-weight: 600; color: var(--accent); background: var(--accent-light); padding: 0.25rem 0.75rem; }
+  .cs-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  .cs-tag { font-size: 0.72rem; color: var(--text-muted); border: 1px solid var(--text-muted); padding: 0.15rem 0.5rem; }
+  .cs-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+  .cs-preview { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .cs-toggle { background: none; border: none; cursor: pointer; color: var(--accent); font-size: 0.875rem; font-family: var(--font); padding: 0; display: flex; align-items: center; gap: 0.3rem; }
+  .cs-expanded { display: none; margin-top: 1.5rem; }
+  .cs-expanded.open { display: block; }
+  .cs-section { margin-bottom: 1.5rem; padding-left: 1rem; border-left: 3px solid var(--accent); }
+  .cs-section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); font-weight: 600; margin-bottom: 0.4rem; }
+  .cs-section-text { font-size: 0.875rem; color: var(--text-muted); }
+  .cs-section-text p { margin-bottom: 0.5rem; }
+  .cs-footer { display: flex; border-top: 1.5px solid var(--border); margin-top: 1.5rem; padding-top: 1.5rem; gap: 0; }
+  .cs-footer-metric { flex: 1; display: flex; flex-direction: column; gap: 0.25rem; padding: 0 1rem; border-right: 1px solid var(--border); }
+  .cs-footer-metric:first-child { padding-left: 0; }
+  .cs-footer-metric:last-child { border-right: none; }
+  .cs-footer-number { font-size: 1rem; font-weight: 700; }
+
+  /* KEY ACHIEVEMENTS */
+  .achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+  .achievement-card { padding: 1.75rem; }
+  .achievement-number { font-size: 2.5rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+  .achievement-label { font-size: 0.875rem; color: var(--text-muted); }
+
+  /* FRAMEWORK BODY */
+  .fw-body { color: var(--text-muted); font-size: 0.9375rem; }
   .fw-body p { margin-bottom: 0.75rem; }
-  .fw-body h2, .fw-body h3 { color: var(--text); margin: 1.5rem 0 0.5rem; }
-  .fw-body h2 { font-size: 1.05rem; }
-  .fw-body h3 { font-size: 0.95rem; }
+  .fw-body h2 { color: var(--text); margin: 1.5rem 0 0.5rem; font-size: 1.05rem; font-weight: 700; }
+  .fw-body h3 { color: var(--text); margin: 1.2rem 0 0.4rem; font-size: 0.95rem; font-weight: 600; }
   .fw-body strong { color: var(--text); }
   .fw-body ul { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+  .fw-body li { margin-bottom: 0.3rem; }
   .fw-body blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--accent); font-style: italic; margin: 1rem 0; }
   .fw-body table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
-  .fw-body th { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--text); }
+  .fw-body th { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1.5px solid var(--border); color: var(--text); font-weight: 600; }
   .fw-body td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--text-muted); }
   .fw-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
-  /* Testimonials */
-  .testimonials-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-  .testimonial-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 1.75rem; display: flex; flex-direction: column; gap: 1.2rem;
-  }
-  .testimonial-quote { font-size: 0.95rem; color: var(--text); line-height: 1.7; font-style: italic; }
-  .testimonial-card figcaption { display: flex; align-items: center; gap: 0.9rem; }
-  .testimonial-initials {
-    width: 40px; height: 40px; border-radius: 50%; background: var(--bg-surface);
-    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); flex-shrink: 0;
-  }
+  /* EXPERIENCE */
+  .experience-list { display: flex; flex-direction: column; }
+  .experience-item { display: flex; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+  .exp-dates { font-size: 0.8125rem; color: var(--text-muted); min-width: 140px; flex-shrink: 0; padding-top: 0.1rem; }
+  .exp-role { font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .exp-company { font-size: 0.9375rem; color: var(--accent); margin-bottom: 0.4rem; }
+  .exp-summary { font-size: 0.875rem; color: var(--text-muted); }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .testimonial-card { background: var(--bg-surface); border: 1.5px solid var(--border); padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; }
+  .testimonial-quote { font-size: 0.9375rem; color: var(--text); line-height: 1.7; font-style: italic; }
+  .testimonial-card figcaption { display: flex; align-items: center; gap: 0.875rem; }
+  .testimonial-initials { width: 40px; height: 40px; background: var(--accent-light); border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 700; color: var(--accent); flex-shrink: 0; }
   .testimonial-attribution { display: flex; flex-direction: column; gap: 0.1rem; }
-  .testimonial-attribution strong { font-size: 0.9rem; }
+  .testimonial-attribution strong { font-size: 0.875rem; }
   .testimonial-attribution span { font-size: 0.8rem; color: var(--text-muted); }
-  .testimonial-relationship { font-size: 0.75rem !important; }
 
-  /* Footer */
-  .footer { padding: 4rem 0; }
-  .footer .section-title { margin-bottom: 1rem; }
-  .footer p { color: var(--text-muted); margin-bottom: 1rem; }
-  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--accent); }
-  .footer-updated { font-size: 0.78rem; color: var(--border); }
+  /* FOOTER / CONTACT */
+  .footer { border-top: 1.5px solid var(--border); }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .footer-cta-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; line-height: 1.2; }
+  .footer-links { display: flex; flex-direction: column; gap: 0; }
+  .footer-link { color: var(--text); text-decoration: none; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border); padding: 1rem 0; }
+  .footer-link:hover { color: var(--accent); }
+  .footer-info { display: flex; flex-direction: column; gap: 0.5rem; padding-top: 1rem; }
+  .footer-info p { font-size: 0.875rem; color: var(--text-muted); }
 
-  code { font-family: var(--font-mono); font-size: 0.88em; background: var(--bg-surface); padding: 0.1em 0.4em; border-radius: 3px; }
+  code { font-family: 'Courier New', monospace; font-size: 0.88em; background: var(--bg-surface); padding: 0.1em 0.4em; border: 1px solid var(--border); }
 
-  @media (max-width: 640px) {
-    .nav-links { gap: 1rem; }
-    .cs-meta { flex-direction: column; }
-    .hero-contact { flex-direction: column; gap: 0.75rem; }
+  @media (max-width: 768px) {
+    .nav-center { display: none; }
+    .nav-cta { display: none; }
+    .nav-hamburger { display: block; }
+    .hero { padding: 48px 0; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-right { justify-content: center; order: -1; margin-bottom: 2rem; }
+    .hero-image-wrap { width: 260px; height: 300px; }
+    .hero-metrics-bar { grid-template-columns: repeat(2, 1fr); }
+    .charts-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .experience-item { flex-direction: column; gap: 0.5rem; }
+    .exp-dates { min-width: auto; }
+    section { padding: 48px 0; }
+    .maturity-tier { flex-wrap: wrap; }
+    .maturity-tier-tag { width: 100%; }
   }
 </style>
 </head>
 <body>
   
-    <nav class="nav">
-      <div class="container nav-inner">
-        <span class="nav-brand">AS</span>
-        <ul class="nav-links">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#thinking">Thinking</a></li>
-          <li><a href="#people">People</a></li>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <strong>AS</strong>
+          <span class="nav-divider">|</span>
+          <span class="nav-role">Sr. Director of Product</span>
+        </div>
+        <ul class="nav-center">
+          <li><a href="#work">Impact</a></li>
+          <li><a href="#achievements">Key Achievements</a></li>
+          <li><a href="#thinking">On AI</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#people">From the Team</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="nav-right">
+          <a class="nav-cta" href="#contact">Let's Talk</a>
+          <button class="nav-hamburger" aria-label="Open menu" onclick="this.nextElementSibling.classList.toggle('open')">&#9776;</button>
+          <ul class="nav-mobile-menu">
+            <li><a href="#work" onclick="this.closest('.nav-mobile-menu').classList.remove('open')">Impact</a></li>
+            <li><a href="#achievements" onclick="this.closest('.nav-mobile-menu').classList.remove('open')">Key Achievements</a></li>
+            <li><a href="#thinking" onclick="this.closest('.nav-mobile-menu').classList.remove('open')">On AI</a></li>
+            <li><a href="#experience" onclick="this.closest('.nav-mobile-menu').classList.remove('open')">Experience</a></li>
+            <li><a href="#people" onclick="this.closest('.nav-mobile-menu').classList.remove('open')">From the Team</a></li>
+            <li><a href="#contact" onclick="this.closest('.nav-mobile-menu').classList.remove('open')">Contact</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   <main>
     
     <section id="hero" class="hero">
       <div class="container">
-        <div class="availability-badge open">Available now</div>
-        <h1 class="hero-name">Anirudh Sriraman</h1>
-        <p class="hero-title">Director / VP Product</p>
-        <p class="hero-tagline">"From Customer Signal to Revenue Certainty"</p>
-        <div class="hero-contact">
-          <a href="mailto:anirudhsriraman@gmail.com">anirudhsriraman@gmail.com</a>
-          <a href="https://wa.me/971527320022">WhatsApp +971527320022</a>
-          <a href="https://www.linkedin.com/in/anirudh-sriraman-55471118/" target="_blank" rel="noopener">LinkedIn</a>
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="availability-badge">
+              <span class="badge-dot">&#9679;</span>
+              Open to VP Product roles in GCC
+            </div>
+            <div class="metric-pills">
+              <div class="metric-pill"><span class="pill-value">14yr</span><span class="pill-label">Experience</span></div>
+              <div class="metric-pill"><span class="pill-value">$6M</span><span class="pill-label">ARR Built</span></div>
+              <div class="metric-pill"><span class="pill-value">96%</span><span class="pill-label">Retention</span></div>
+            </div>
+            <h1 class="hero-name">Anirudh Sriraman</h1>
+            <p class="hero-title">Sr. Director of Product</p>
+            <p class="hero-tagline">14 years building AI-CX platforms that scale enterprise revenue across GCC regulated markets.</p>
+            <div class="hero-ctas">
+              <a href="#work" class="cta-primary">See My Impact &#8594;</a>
+              <a href="#contact" class="cta-secondary">&#9993; Get in Touch</a>
+            </div>
+            <hr class="hero-divider">
+            <div class="hero-metrics-bar">
+              <div class="metric-item">
+                <span class="metric-number">14+</span>
+                <span class="metric-label">Years Experience</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-number">$6M</span>
+                <span class="metric-label">ARR from Zero</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-number">96%</span>
+                <span class="metric-label">Customer Retention</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-number">35%</span>
+                <span class="metric-label">RFP Win Rate</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-image-wrap">
+              <div class="hero-image-frame"></div>
+              <img src="assets/images/headshot.png" alt="Anirudh Sriraman" style="max-width:100%">
+            </div>
+          </div>
         </div>
-        
-        <div class="hero-cta">
-          <p class="hero-cta-primary">Open to VP Product roles in GCC</p>
-          <p class="hero-cta-secondary">Let's talk</p>
-        </div>
-        <div class="hero-body"><h1>About</h1>
-
-<p>I build products that make enterprise data useful, not just collected. Over 14 years across the US, GCC, and Asia, I've led the full arc: from zero-to-one product creation to portfolio governance, M&A evaluation, and P&L ownership.
-
-<p><strong>Key metric:</strong> $6M ARR from zero at Dropthought.
-
-<p><strong>Industry focus:</strong> B2B SaaS · AI/ML platforms · GCC and global enterprise
-
-<p><strong>Role focus:</strong> Building AI-powered CX platforms that scale enterprise revenue, across GCC regulated markets, Fortune 500, and government enterprise.
-
-</p>
-<h2>Certifications</h2>
-
-<ul>
-<li>CCXP</li>
-<li>SAFe 6 LPM</li>
-<li>AWS Cloud Practitioner</li>
-<li>AWS AI Practitioner</li>
-<li>DESC ISR</li>
-<li>ISO 27001</li>
-</ul>
-
-<h2>Education</h2>
-
-<ul>
-<li><strong>Master of Engineering Management</strong> - Dartmouth College (Thayer & Tuck), 2010–2012</li>
-<li><strong>B.E. Electrical & Electronics Engineering</strong> - Anna University, 2003–2007</li>
-</ul>
-
-<h2>Metrics</h2>
-
-<p>arr: "$6M"
-retention-before: "70%"
-retention-after: "96%"
-win-rate-before: "14%"
-win-rate-after: "35%"
-pipeline: "$25M+"
-expansion-revenue: "40%"
-nlp-accuracy-before: "52%"
-nlp-accuracy-after: "78%"
-labeled-data-points: "5.4M+"
-inter-annotator-agreement: "90%"
-engineers-led: "40"
-pm-promotions: "3"
-acquisition-value: "$1.2M"
-roadmap-acceleration: "18 months"
-annual-calls-td123: "810K+"
-csat-improvement-imagine: "25%"
-years-experience: "14+"
-team-size: "100+"
-enterprise-wins: "5"
-service-delivery-improvement: "30%"
-
-</p>
-<h2>Audiences</h2>
-
-<p>founder-ceo:
-label: "Founder / CEO"
-context: "AI company, ~$20M"
-cares-about: [zero-to-one, AI commercialisation, full-stack ownership]
-
-<p>recruiter:
-label: "Recruiter"
-context: "Placing senior product leaders"
-cares-about: [credentials, metrics, tenure, fit-signal]
-
-<p>vp-product:
-label: "VP of Product"
-context: "Enterprise B2B SaaS"
-cares-about: [team-leadership, roadmap-governance, commercial-impact]
-
-<p>vp-ai:
-label: "VP / Global Head of AI Innovation Lab"
-context: "Any sector"
-cares-about: [AI-deployment, production-AI, governance, regulated-markets]
-
-<p>vp-dx:
-label: "VP of Digital Transformation"
-context: "Govt, Telco, Retail, Hospitality"
-cares-about: [change-management, adoption, org-readiness, sector-delivery]
-
-<p>vp-cx:
-label: "VP of Customer Experience"
-context: "Govt, Telco, Retail, Hospitality"
-cares-about: [VoC-architecture, CX-maturity, retention, NPS-to-revenue]</p></div>
       </div>
     </section>
+    <div class="ticker-row">
+      <div class="ticker-inner">
+        <span class="ticker-label">Clients</span>
+        <div class="ticker-names">
+          <span class="ticker-name">MoH Oman</span>
+          <span class="ticker-name">Oman Post</span>
+          <span class="ticker-name">HDB Singapore</span>
+          <span class="ticker-name">Kanoo Group</span>
+          <span class="ticker-name">Cisco</span>
+          <span class="ticker-name">HP</span>
+          <span class="ticker-name">Adobe</span>
+        </div>
+      </div>
+    </div>
     
-    <section id="work" class="work">
+    <section id="work" class="section-work">
       <div class="container">
-        <h2 class="section-title">Work</h2>
-        <div class="case-studies-grid">
+        
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="section-num">01</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2 class="section-title">Impact</h2>
+      <p class="section-subtitle">Enterprise wins built on product depth, not sales muscle.</p>
+    </div>
+        
+    <div class="charts-grid">
+      <div class="card chart-card">
+        <div class="chart-title">ARR Growth</div>
+        
+    <svg viewBox="0 0 332 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;overflow:visible">
+      <!-- axes -->
+      <line x1="36" y1="0" x2="36" y2="152" stroke="var(--border)" stroke-width="1.5"/>
+      <line x1="36" y1="152" x2="332" y2="152" stroke="var(--border)" stroke-width="1.5"/>
+      <text x="32" y="155" text-anchor="end" font-size="8" fill="var(--text-muted)">$0</text>
+      <line x1="36" y1="152" x2="332" y2="152" stroke="var(--text-muted)" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.4"/><text x="32" y="104" text-anchor="end" font-size="8" fill="var(--text-muted)">$2M</text>
+      <line x1="36" y1="101" x2="332" y2="101" stroke="var(--text-muted)" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.4"/><text x="32" y="54" text-anchor="end" font-size="8" fill="var(--text-muted)">$4M</text>
+      <line x1="36" y1="51" x2="332" y2="51" stroke="var(--text-muted)" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.4"/><text x="32" y="3" text-anchor="end" font-size="8" fill="var(--text-muted)">$6M</text>
+      <line x1="36" y1="0" x2="332" y2="0" stroke="var(--text-muted)" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.4"/>
+      
+      <rect x="52" y="132" width="40" height="20" fill="var(--accent)" />
+      <text x="72" y="128" text-anchor="middle" font-size="9" font-weight="400" fill="var(--text)">$0.8M</text>
+      <text x="72" y="174" text-anchor="middle" font-size="9" fill="var(--text-muted)">Year 1</text>
+      <rect x="108" y="114" width="40" height="38" fill="var(--accent)" />
+      <text x="128" y="110" text-anchor="middle" font-size="9" font-weight="400" fill="var(--text)">$1.5M</text>
+      <text x="128" y="174" text-anchor="middle" font-size="9" fill="var(--text-muted)">Year 2</text>
+      <rect x="164" y="81" width="40" height="71" fill="var(--accent)" />
+      <text x="184" y="77" text-anchor="middle" font-size="9" font-weight="400" fill="var(--text)">$2.8M</text>
+      <text x="184" y="174" text-anchor="middle" font-size="9" fill="var(--text-muted)">Year 3</text>
+      <rect x="220" y="46" width="40" height="106" fill="var(--accent)" />
+      <text x="240" y="42" text-anchor="middle" font-size="9" font-weight="400" fill="var(--text)">$4.2M</text>
+      <text x="240" y="174" text-anchor="middle" font-size="9" fill="var(--text-muted)">Year 4</text>
+      <rect x="276" y="0" width="40" height="152" fill="var(--accent)" />
+      <text x="296" y="-4" text-anchor="middle" font-size="9" font-weight="700" fill="var(--text)">$6M ARR</text>
+      <text x="296" y="174" text-anchor="middle" font-size="9" fill="var(--text-muted)">Year 5</text>
+    </svg>
+      </div>
+      <div class="card chart-card">
+        <div class="chart-title">Customer Retention</div>
+        
+    <div class="retention-chart">
+      <div class="retention-row">
+        <div class="retention-label-row">
+          <span class="retention-name">Before</span>
+          <span class="retention-pct" style="color:var(--text-muted)">70%</span>
+        </div>
+        <div class="retention-bar-track">
+          <div class="retention-bar-fill" style="width:70%;background:var(--text-muted)"></div>
+        </div>
+      </div>
+      <div class="retention-row">
+        <div class="retention-label-row">
+          <span class="retention-name">After</span>
+          <span class="retention-pct" style="color:var(--accent)">96%</span>
+        </div>
+        <div class="retention-bar-track">
+          <div class="retention-bar-fill" style="width:96%;background:var(--accent)">
+            <span class="retention-annotation">+26pts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+    <p class="chart-source">Dropthought · Bahwan CyberTek · 2016-2026</p>
+        <div class="case-studies-grid" style="margin-top:3rem">
           
       <article class="case-study-card" data-slug="dropthought-zero-to-arr" data-priority="1">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-founder-ceo">founder-ceo</span><span class="audience audience-vp-product">vp-product</span></div>
-          <div class="cs-metrics"></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge"></span>
+          <div class="cs-tags"><span class="cs-tag">zero-to-one</span><span class="cs-tag">validation</span><span class="cs-tag">enterprise</span></div>
         </div>
         <h3 class="cs-title">From Mickey Mouse to Cisco: Validating an Enterprise Product</h3>
-        <div class="cs-body"><h2>Framing</h2>
-
-<p>This is a story about knowing when your product is wrong and moving
-fast enough to fix it before the market moves on. The signal was not
-data  -  it was an executive telling me directly the product looked like
-a Mickey Mouse tool. Four months later we signed Cisco.
-
-</p>
-<h2>Context</h2>
-
-<p>Dropthought was designed for SMB. The product reflected that  -  lightweight,
+        <p class="cs-preview">This is a story about knowing when your product is wrong and moving 
+fast enough to fix it before the market moves on. The signal was not 
+data  -  it was an executive telling me directly the product looked like 
+a Mickey Mouse tool. Four months later we signed Cisco.</p>
+        <button class="cs-toggle" data-idx="0">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-0">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>Dropthought was designed for SMB. The product reflected that  -  lightweight,
 self-serve, optimised for ease of setup over depth of capability. When we
 took it upmarket the buyer signal was customer silence. Not complaints.
 Not churn. Silence. Wrong buyer, wrong use case, wrong positioning.
@@ -303,12 +469,11 @@ We were getting meetings but nothing was converting.
 
 <p>The moment that clarified it: an enterprise executive looked at the
 product demo and said it looked like a Mickey Mouse product. That
-is not a positioning problem. That is a product problem.
-
-</p>
-<h2>Decision</h2>
-
-<p>We had two options. Reposition the SMB product with better enterprise
+is not a positioning problem. That is a product problem.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>We had two options. Reposition the SMB product with better enterprise
 messaging  -  the cheaper, faster choice. Or rebuild for enterprise from
 the ground up  -  the harder choice that would take four months and
 carry real execution risk.
@@ -326,12 +491,11 @@ enterprise user types. The goal was to not rebuild blind.
 <p>That research surfaced Executive Briefing Centers in Fortune 100
 companies as the beachhead. Large event volume, underserved by
 existing tools, and structurally positioned for account expansion  -
-a win in EBC could open the rest of the enterprise.
-
-</p>
-<h2>Action</h2>
-
-<p>Four-month rebuild targeted specifically at the EBC use case.
+a win in EBC could open the rest of the enterprise.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>Four-month rebuild targeted specifically at the EBC use case.
 Every product decision in that rebuild was tested against the
 user types the research had identified  -  not against what we
 thought enterprise wanted, against what the research showed
@@ -339,12 +503,11 @@ they actually needed.
 
 <p>Cisco was the target. One of the largest EBC operations in
 the world. If the redesigned product worked there it would work
-anywhere in the segment.
-
-</p>
-<h2>Outcome</h2>
-
-<p>We won Cisco. The solution worked well enough that five more
+anywhere in the segment.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>We won Cisco. The solution worked well enough that five more
 hi-tech companies signed on for the same use case without
 requiring us to reposition. That replication is the validation
 signal  -  when you stop explaining and customers start referring,
@@ -362,95 +525,107 @@ quarter repositioning a product that needed a complete redesign.
 The lesson: customer silence is a signal but it is an ambiguous one.
 Sometimes you need someone to say the hard thing directly before
 you move fast enough.</p></div>
-        <div class="cs-tags"><span class="tag">zero-to-one</span><span class="tag">validation</span><span class="tag">enterprise</span><span class="tag">pivot</span><span class="tag">research</span></div>
+          </div>
+        </div>
+        
       </article>
 
       <article class="case-study-card" data-slug="presales-transformation" data-priority="1">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-recruiter">recruiter</span><span class="audience audience-cpo">cpo</span><span class="audience audience-dx">dx</span></div>
-          <div class="cs-metrics"><span class="metric">14→35% RFP win rate</span><span class="metric">27 scoring dimensions</span><span class="metric">$25M+ pipeline managed</span></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge">14→35% RFP win rate</span>
+          <div class="cs-tags"><span class="cs-tag">presales</span><span class="cs-tag">enterprise</span><span class="cs-tag">sales-strategy</span></div>
         </div>
         <h3 class="cs-title">Rebuilding the Enterprise Win Rate</h3>
-        <div class="cs-body"><h1>Rebuilding the Enterprise Win Rate</h1>
+        <p class="cs-preview">Rebuilding the Enterprise Win Rate
 
-<p><strong>Metrics:</strong> 14→35% RFP win rate | 27 scoring dimensions | $25M+ pipeline managed
-
-</p>
-<h2>Context</h2>
-
-<p>Sales was pursuing every RFP regardless of fit. Win rate plateaued at 14%. There was no framework to distinguish winnable opportunities from noise, and RFP responses were written in product language rather than buyer language.
-
-</p>
-<h2>Decision</h2>
-
-<p>Built a 27-dimension opportunity scoring model that segmented prospects into four CX maturity tiers. Repositioned RFP responses around buyer language, matching the client's stated pain to our differentiated capability. Introduced a qualification gate before committing presales resources.
-
-</p>
-<h2>Action</h2>
-
-<p>This work was happening while the platform was scaling from zero to $6M ARR, so each percentage point of win rate carried direct revenue consequence.
-
-</p>
-<h2>Outcome</h2>
-
-<p>Win rate climbed from 14% to 35%. The qualification framework became standard presales practice across the team. Pipeline quality improved, reducing wasted cycles on low-fit deals.</p></div>
-        <div class="cs-tags"><span class="tag">presales</span><span class="tag">enterprise</span><span class="tag">sales-strategy</span><span class="tag">opportunity-scoring</span><span class="tag">b2b-saas</span></div>
+**Metrics:** 14→35% RFP win rate | 27 scoring dimensions | $25M+ pipeline managed</p>
+        <button class="cs-toggle" data-idx="1">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-1">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>Sales was pursuing every RFP regardless of fit. Win rate plateaued at 14%. There was no framework to distinguish winnable opportunities from noise, and RFP responses were written in product language rather than buyer language.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>Built a 27-dimension opportunity scoring model that segmented prospects into four CX maturity tiers. Repositioned RFP responses around buyer language, matching the client's stated pain to our differentiated capability. Introduced a qualification gate before committing presales resources.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>This work was happening while the platform was scaling from zero to $6M ARR, so each percentage point of win rate carried direct revenue consequence.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>Win rate climbed from 14% to 35%. The qualification framework became standard presales practice across the team. Pipeline quality improved, reducing wasted cycles on low-fit deals.</p></div>
+          </div>
+        </div>
+        <div class="cs-footer">
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">14→35% RFP win rate</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">27 scoring dimensions</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">$25M+ pipeline managed</span>
+      </div></div>
       </article>
 
       <article class="case-study-card" data-slug="great-resignation" data-priority="2">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-recruiter">recruiter</span><span class="audience audience-cpo">cpo</span><span class="audience audience-dx">dx</span></div>
-          <div class="cs-metrics"><span class="metric">40 engineers led</span><span class="metric">0 penalties incurred</span><span class="metric">3 PMs promoted</span></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge">40 engineers led</span>
+          <div class="cs-tags"><span class="cs-tag">engineering-leadership</span><span class="cs-tag">team-retention</span><span class="cs-tag">delivery</span></div>
         </div>
         <h3 class="cs-title">Inheriting Engineering During the Great Resignation</h3>
-        <div class="cs-body"><h1>Inheriting Engineering During the Great Resignation</h1>
-
-<p><strong>Metrics:</strong> 40 engineers led | 0 penalties incurred | 3 PMs promoted
-
-</p>
-<h2>Framing</h2>
-
-<p>A VP Product reading this sees org design executed under crisis: a PM career ladder built from the ground up, an ownership model that gave engineers direct product accountability, and cross-functional leadership that held a 40-person organisation together through sudden leadership loss. The zero-attrition outcome was not luck  -  it was the result of deliberate cultural architecture built during the transition.
-
-</p>
-<h2>Context</h2>
-
-<p>The VP of Engineering departed suddenly. Eight senior engineers followed within weeks. A $2M backlog order was at risk. I stepped in to lead 40 engineers with no prior mandate to do so.
-
-</p>
-<h2>Decision</h2>
-
-<p>Week-one: one-on-ones with every team lead. I was transparent about my limitations: "I'm not pretending to be a CTO. I'm here to unblock you."
-
-</p>
-<h2>Action</h2>
-
-<p>Changed workflows to expand demo days for API teams, giving engineers direct visibility and ownership. Maintained the culture of psychological safety through the transition.
-
-</p>
-<h2>Outcome</h2>
-
-<p>Zero attrition over 15 months against a 20%+ industry average during the same period. The $2M order was delivered on time with zero contract penalties. Three PMs were promoted during this stretch. The team's identity shifted from fear of the departure to pride in the delivery.</p></div>
-        <div class="cs-tags"><span class="tag">engineering-leadership</span><span class="tag">team-retention</span><span class="tag">delivery</span><span class="tag">people-management</span></div>
+        <p class="cs-preview">A VP Product reading this sees org design executed under crisis: a PM career ladder built from the ground up, an ownership model that gave engineers direct product accountability, and cross-functional leadership that held a 40-person organisation together through sudden leadership loss. The zero-att</p>
+        <button class="cs-toggle" data-idx="2">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-2">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>The VP of Engineering departed suddenly. Eight senior engineers followed within weeks. A $2M backlog order was at risk. I stepped in to lead 40 engineers with no prior mandate to do so.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>Week-one: one-on-ones with every team lead. I was transparent about my limitations: "I'm not pretending to be a CTO. I'm here to unblock you."</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>Changed workflows to expand demo days for API teams, giving engineers direct visibility and ownership. Maintained the culture of psychological safety through the transition.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>Zero attrition over 15 months against a 20%+ industry average during the same period. The $2M order was delivered on time with zero contract penalties. Three PMs were promoted during this stretch. The team's identity shifted from fear of the departure to pride in the delivery.</p></div>
+          </div>
+        </div>
+        <div class="cs-footer">
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">40 engineers led</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">0 penalties incurred</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">3 PMs promoted</span>
+      </div></div>
       </article>
 
       <article class="case-study-card" data-slug="pm-org-design" data-priority="2">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-vp-product">vp-product</span><span class="audience audience-founder-ceo">founder-ceo</span></div>
-          <div class="cs-metrics"></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge"></span>
+          <div class="cs-tags"><span class="cs-tag">org-design</span><span class="cs-tag">pm-development</span><span class="cs-tag">career-ladder</span></div>
         </div>
         <h3 class="cs-title">Building the PM Growth System: From Startup Chaos to</h3>
-        <div class="cs-body"><h2>Framing</h2>
-
-<p>A VP Product inheriting a team needs to know two things: can this
-person grow PMs deliberately, and can they hold a performance standard
-without losing the team. This story is about building the system that
-did both  -  from scratch, inside a company that had never needed one.
-
-</p>
-<h2>Context</h2>
-
-<p>BCT operated with a startup mindset inside a large enterprise. Titles
+        <p class="cs-preview">A VP Product inheriting a team needs to know two things: can this 
+person grow PMs deliberately, and can they hold a performance standard 
+without losing the team. This story is about building the system that 
+did both  -  from scratch, inside a company that had never needed one.</p>
+        <button class="cs-toggle" data-idx="3">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-3">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>BCT operated with a startup mindset inside a large enterprise. Titles
 were informal, expectations were implicit, and advancement was assumed rather
 than structured. That worked until it did not.
 
@@ -458,12 +633,11 @@ than structured. That worked until it did not.
 I did not think they had earned. Not because they were wrong to ask  -
 because there was no shared language for what earning a promotion
 actually meant. I was holding a standard in my head that nobody else
-could see. That is not a performance problem. That is a system problem.
-
-</p>
-<h2>Decision</h2>
-
-<p>I could have handled promotion requests case by case  -  the faster,
+could see. That is not a performance problem. That is a system problem.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>I could have handled promotion requests case by case  -  the faster,
 lower-effort path. Instead I decided to build a formal career ladder
 that made expectations visible to everyone on the team simultaneously.
 
@@ -471,12 +645,11 @@ that made expectations visible to everyone on the team simultaneously.
 If only I know what good looks like at each level, I am the bottleneck
 and the arbiter. A transparent ladder shifts that  -  PMs can self-assess,
 peers can calibrate against each other, and I can give feedback that
-references a shared framework rather than my personal judgment.
-
-</p>
-<h2>Action</h2>
-
-<p>Built a five-dimension career ladder covering Insight, Strategy,
+references a shared framework rather than my personal judgment.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>Built a five-dimension career ladder covering Insight, Strategy,
 Execution, Outcomes, and Leadership  -  with explicit level descriptors
 from Associate PM through Principal PM. Every PM was rated annually
 across all five dimensions.
@@ -500,12 +673,11 @@ solution uniqueness, and emotional delight  -  and my sign-off.
 This gave junior PMs real authority from day one while creating a
 forcing function for structured thinking on high-stakes decisions.
 Early briefs came back for rework. I held the standard deliberately.
-By the 12-month mark, submission quality had improved measurably.
-
-</p>
-<h2>Outcome</h2>
-
-<p>Three PMs promoted to Senior PM through the ladder system. The
+By the 12-month mark, submission quality had improved measurably.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>Three PMs promoted to Senior PM through the ladder system. The
 promotion I am most proud of: a senior designer who transitioned
 into product and eventually became a Senior PM. They had no
 traditional PM background. What they had was the ability to take
@@ -534,125 +706,273 @@ appears on paper. That makes honesty sustainable. Without the
 cadence, holding the standard would have eventually cost me
 relationships. With it, the standard became something we developed
 toward together.</p></div>
-        <div class="cs-tags"><span class="tag">org-design</span><span class="tag">pm-development</span><span class="tag">career-ladder</span><span class="tag">mentorship</span><span class="tag"></span></div>
+          </div>
+        </div>
+        
       </article>
 
       <article class="case-study-card" data-slug="arabic-nlp" data-priority="3">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-cpo">cpo</span><span class="audience audience-dx">dx</span></div>
-          <div class="cs-metrics"><span class="metric">52→78% NLP accuracy</span><span class="metric">5.4M+ labeled data points</span><span class="metric">90% inter-annotator agreement</span></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge">52→78% NLP accuracy</span>
+          <div class="cs-tags"><span class="cs-tag">nlp</span><span class="cs-tag">arabic</span><span class="cs-tag">machine-learning</span></div>
         </div>
         <h3 class="cs-title">Building Arabic NLP from Scratch</h3>
-        <div class="cs-body"><h1>Building Arabic NLP from Scratch</h1>
-
-<p><strong>Metrics:</strong> 52→78% NLP accuracy | 5.4M+ labeled data points | 90% inter-annotator agreement
-
-</p>
-<h2>Framing</h2>
-
-<p>Shipping AI in a regulated market is a governance problem as much as a technical one. This story shows the HumInt pipeline - dual-annotator consensus and IRR quality gates - and the decision to hold at 52% accuracy until governance standards were met before deploying to GCC enterprise clients. A VP AI Innovation needs to see that production AI judgment includes knowing when not to ship.
-
-</p>
-<h2>Context</h2>
-
-<p>Arabic sentiment analysis was required for GCC enterprise clients. Off-the-shelf models had inadequate accuracy and no explainability, a blocker for regulated-market adoption. A custom model was the only viable path.
-
-</p>
-<h2>Decision</h2>
-
-<p>Built <strong>HumInt</strong>: an in-house human annotation pipeline featuring dual-annotator consensus, IRR-based quality gates, and a productivity dashboard for annotator tracking; scaled to process 5.4M+ labeled data points at 90% inter-annotator agreement.
-
-</p>
-<h2>Action</h2>
-
-<p>Designed the pipeline to handle Arabic dialect variation and ensure annotation consistency at scale.
-
-</p>
-<h2>Outcome</h2>
-
-<p>NLP accuracy improved from 52% to 78%. The pipeline processed 5.4M labeled data points with 90% inter-annotator agreement. HumInt became a competitive differentiator for GCC market positioning. No competitor had equivalent explainability for Arabic-language CX data.</p></div>
-        <div class="cs-tags"><span class="tag">nlp</span><span class="tag">arabic</span><span class="tag">machine-learning</span><span class="tag">annotation</span><span class="tag">gccc</span><span class="tag">ai</span></div>
+        <p class="cs-preview">Shipping AI in a regulated market is a governance problem as much as a technical one. This story shows the HumInt pipeline - dual-annotator consensus and IRR quality gates - and the decision to hold at 52% accuracy until governance standards were met before deploying to GCC enterprise clients. A VP </p>
+        <button class="cs-toggle" data-idx="4">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-4">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>Arabic sentiment analysis was required for GCC enterprise clients. Off-the-shelf models had inadequate accuracy and no explainability, a blocker for regulated-market adoption. A custom model was the only viable path.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>Built <strong>HumInt</strong>: an in-house human annotation pipeline featuring dual-annotator consensus, IRR-based quality gates, and a productivity dashboard for annotator tracking; scaled to process 5.4M+ labeled data points at 90% inter-annotator agreement.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>Designed the pipeline to handle Arabic dialect variation and ensure annotation consistency at scale.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>NLP accuracy improved from 52% to 78%. The pipeline processed 5.4M labeled data points with 90% inter-annotator agreement. HumInt became a competitive differentiator for GCC market positioning. No competitor had equivalent explainability for Arabic-language CX data.</p></div>
+          </div>
+        </div>
+        <div class="cs-footer">
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">52→78% NLP accuracy</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">5.4M+ labeled data points</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">90% inter-annotator agreement</span>
+      </div></div>
       </article>
 
       <article class="case-study-card" data-slug="krita-acquisition" data-priority="4">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-cpo">cpo</span><span class="audience audience-recruiter">recruiter</span></div>
-          <div class="cs-metrics"><span class="metric">$1.2M acquisition led</span><span class="metric">18-month roadmap acceleration</span><span class="metric">3 products in portfolio</span></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge">$1.2M acquisition led</span>
+          <div class="cs-tags"><span class="cs-tag">m-and-a</span><span class="cs-tag">agentic-ai</span><span class="cs-tag">product-strategy</span></div>
         </div>
         <h3 class="cs-title">Krita.ai Acquisition</h3>
-        <div class="cs-body"><h1>Krita.ai Acquisition</h1>
-
-<p><strong>Metrics:</strong> $1.2M acquisition led | 18-month roadmap acceleration | 3 products in portfolio
-
-</p>
-<h2>Framing</h2>
-
-<p>A capital-constrained build vs buy decision: no existing agentic AI capability, an 18-month internal build estimate, and a competitive window closing. $1.2M was deployed to collapse the roadmap gap through acquisition  -  requiring full ownership of strategy and execution, from technical due diligence to board alignment. This is the kind of resource allocation judgment a founder-CEO needs to see: when to acquire, how much to deploy, and what it buys.
-
-</p>
-<h2>Context</h2>
-
-<p>Enterprise clients were requesting agentic AI capabilities. Internal build estimates put the timeline at 18+ months. Waiting was a competitive risk. Peers were shipping agentic features faster.
-
-</p>
-<h2>Decision</h2>
-
-<p>Led the $1.2M M&A evaluation end-to-end: technical due diligence, product-market fit assessment against our client base, integration roadmap design, and stakeholder alignment.
-
-</p>
-<h2>Action</h2>
-
-<p>Identified Krita.ai as the best fit for accelerating the agentic AI layer without disrupting the core platform.
-
-</p>
-<h2>Outcome</h2>
-
-<p>Roadmap accelerated by 18 months. A new revenue stream was added to the portfolio. The acquisition strengthened our agentic AI positioning in GCC enterprise sales conversations, moving from a roadmap promise to a shipped capability.</p></div>
-        <div class="cs-tags"><span class="tag">m-and-a</span><span class="tag">agentic-ai</span><span class="tag">product-strategy</span><span class="tag">due-diligence</span><span class="tag">portfolio</span></div>
+        <p class="cs-preview">A capital-constrained build vs buy decision: no existing agentic AI capability, an 18-month internal build estimate, and a competitive window closing. $1.2M was deployed to collapse the roadmap gap through acquisition  -  requiring full ownership of strategy and execution, from technical due diligen</p>
+        <button class="cs-toggle" data-idx="5">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-5">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>Enterprise clients were requesting agentic AI capabilities. Internal build estimates put the timeline at 18+ months. Waiting was a competitive risk. Peers were shipping agentic features faster.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>Led the $1.2M M&A evaluation end-to-end: technical due diligence, product-market fit assessment against our client base, integration roadmap design, and stakeholder alignment.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>Identified Krita.ai as the best fit for accelerating the agentic AI layer without disrupting the core platform.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>Roadmap accelerated by 18 months. A new revenue stream was added to the portfolio. The acquisition strengthened our agentic AI positioning in GCC enterprise sales conversations, moving from a roadmap promise to a shipped capability.</p></div>
+          </div>
+        </div>
+        <div class="cs-footer">
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">$1.2M acquisition led</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">18-month roadmap acceleration</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">3 products in portfolio</span>
+      </div></div>
       </article>
 
       <article class="case-study-card" data-slug="govtech-telecom" data-priority="5">
-        <div class="cs-meta">
-          <div class="cs-audience"><span class="audience audience-recruiter">recruiter</span><span class="audience audience-cpo">cpo</span><span class="audience audience-dx">dx</span></div>
-          <div class="cs-metrics"><span class="metric">810K+ annual calls (TD123)</span><span class="metric">25% CSAT improvement (Imagine Telecom)</span><span class="metric">30% faster service delivery</span></div>
+        <div class="cs-card-top">
+          <span class="cs-metric-badge">810K+ annual calls (TD123)</span>
+          <div class="cs-tags"><span class="cs-tag">govtech</span><span class="cs-tag">telecom</span><span class="cs-tag">cx-platform</span></div>
         </div>
         <h3 class="cs-title">Government & Telecom CX at Scale</h3>
-        <div class="cs-body"><h1>Government & Telecom CX at Scale</h1>
+        <p class="cs-preview">Government & Telecom CX at Scale
 
-<p><strong>Metrics:</strong> 810K+ annual calls | 25% CSAT improvement | 30% faster service delivery
-
-</p>
-<h2>Context</h2>
-
-<p>Two enterprise clients in regulated GCC markets needed to modernise their citizen and customer contact operations. TD123 was a Brunei government mandate to centralise national citizen services through a single contact centre, handling 810K+ calls annually with no existing omnichannel infrastructure. Imagine Telecom was a regional carrier with declining CSAT scores and slow service delivery cycles, losing ground to competitors on both resolution speed and upsell conversion.
-
-</p>
-<h2>Decision</h2>
-
-<p>Rather than adapt a generic contact centre product, I led the decision to build tailored platform configurations for each client: a high-availability omnichannel layer for TD123 handling 810K+ annual calls, optimised for regulated-market compliance, and a workflow-driven service delivery model for Imagine Telecom focused on resolution speed and upsell trigger points. Both deployments shared a common feedback integration layer to enable continuous CSAT measurement without separate tooling overhead.
-
-</p>
-<h2>Action</h2>
-
-<p>For TD123, led product development across platform architecture, workflow engine design, and omnichannel model configuration. Worked directly with Brunei government stakeholders to translate regulatory and operational requirements into a contact centre spec that achieved 95% of calls answered within 10 seconds and an 80%+ first call resolution rate. For Imagine Telecom, redesigned service delivery workflows to eliminate handoff delays and embedded upsell prompts at natural resolution points. Aligned both clients to a shared feedback integration spec to enable CSAT tracking at scale.
-
-</p>
-<h2>Outcome</h2>
-
-<p>TD123 handled 810K+ annual calls with a 4.1/5 CSAT score, 95% answer rate within 10 seconds, and 80%+ first call resolution. Imagine Telecom saw a 25% improvement in CSAT, a 30% reduction in service delivery times, and a 20% increase in upsell success rate. Both deployments demonstrated that a single platform architecture, configured for context, could meet government-grade reliability requirements and commercial CX targets simultaneously.</p></div>
-        <div class="cs-tags"><span class="tag">govtech</span><span class="tag">telecom</span><span class="tag">cx-platform</span><span class="tag">omnichannel</span><span class="tag">contact-centre</span><span class="tag">gcc</span></div>
+**Metrics:** 810K+ annual calls | 25% CSAT improvement | 30% faster service delivery</p>
+        <button class="cs-toggle" data-idx="6">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-6">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>Two enterprise clients in regulated GCC markets needed to modernise their citizen and customer contact operations. TD123 was a Brunei government mandate to centralise national citizen services through a single contact centre, handling 810K+ calls annually with no existing omnichannel infrastructure. Imagine Telecom was a regional carrier with declining CSAT scores and slow service delivery cycles, losing ground to competitors on both resolution speed and upsell conversion.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>Rather than adapt a generic contact centre product, I led the decision to build tailored platform configurations for each client: a high-availability omnichannel layer for TD123 handling 810K+ annual calls, optimised for regulated-market compliance, and a workflow-driven service delivery model for Imagine Telecom focused on resolution speed and upsell trigger points. Both deployments shared a common feedback integration layer to enable continuous CSAT measurement without separate tooling overhead.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>For TD123, led product development across platform architecture, workflow engine design, and omnichannel model configuration. Worked directly with Brunei government stakeholders to translate regulatory and operational requirements into a contact centre spec that achieved 95% of calls answered within 10 seconds and an 80%+ first call resolution rate. For Imagine Telecom, redesigned service delivery workflows to eliminate handoff delays and embedded upsell prompts at natural resolution points. Aligned both clients to a shared feedback integration spec to enable CSAT tracking at scale.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>TD123 handled 810K+ annual calls with a 4.1/5 CSAT score, 95% answer rate within 10 seconds, and 80%+ first call resolution. Imagine Telecom saw a 25% improvement in CSAT, a 30% reduction in service delivery times, and a 20% increase in upsell success rate. Both deployments demonstrated that a single platform architecture, configured for context, could meet government-grade reliability requirements and commercial CX targets simultaneously.</p></div>
+          </div>
+        </div>
+        <div class="cs-footer">
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">810K+ annual calls (TD123)</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">25% CSAT improvement (Imagine Telecom)</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">30% faster service delivery</span>
+      </div></div>
       </article>
         </div>
       </div>
     </section>
     
-    <section id="thinking" class="thinking">
+    <section id="achievements" class="section-achievements">
       <div class="container">
-        <h2 class="section-title">Frameworks & Thinking</h2>
-        <div class="frameworks-grid">
+        
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="section-num">02</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2 class="section-title">Key Achievements</h2>
+      <p class="section-subtitle">Numbers with stories behind them.</p>
+    </div>
+        <div class="achievements-grid">
+    <div class="achievement-card card">
+      <div class="achievement-number">$6M</div>
+      <div class="achievement-label">ARR grown from zero over 10 years</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">96%</div>
+      <div class="achievement-label">Customer retention rate (up from 70%)</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">35%</div>
+      <div class="achievement-label">RFP win rate (up from 14%)</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">$25M+</div>
+      <div class="achievement-label">Pipeline built and managed</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">40%</div>
+      <div class="achievement-label">Expansion revenue contribution</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">40</div>
+      <div class="achievement-label">Engineers led across product org</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">$1.2M</div>
+      <div class="achievement-label">M&amp;A acquisition led end-to-end</div>
+    </div>
+    <div class="achievement-card card">
+      <div class="achievement-number">18mo</div>
+      <div class="achievement-label">Roadmap acceleration via acquisition</div>
+    </div></div>
+      </div>
+    </section>
+    
+    <section id="thinking" class="section-thinking">
+      <div class="container">
+        
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="section-num">03</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2 class="section-title">On AI</h2>
+      <p class="section-subtitle">Building AI that earns enterprise trust in regulated markets.</p>
+    </div>
+        
+    <div class="card" style="padding:2rem">
+      <div class="nlp-chart-title">From 52% to 78% -- Making Arabic NLP Trustworthy Enough to Ship</div>
+      <div class="nlp-stages">
+      <div class="nlp-stage">
+        <div class="nlp-stage-header">
+          <span class="nlp-stage-name">Baseline</span>
+          <span class="nlp-stage-pct">52%</span>
+        </div>
+        <div class="nlp-bar-track">
+          <div class="nlp-bar-fill" style="width:52%;background:#6B6B6B"></div>
+        </div>
+        <div class="nlp-stage-notes"><span class="nlp-note">Off-the-shelf model</span><span class="nlp-note">Too low to ship to enterprise clients</span></div>
+      </div>
+      <div class="nlp-stage">
+        <div class="nlp-stage-header">
+          <span class="nlp-stage-name">HumInt Pipeline Built</span>
+          <span class="nlp-stage-pct">65%</span>
+        </div>
+        <div class="nlp-bar-track">
+          <div class="nlp-bar-fill" style="width:65%;background:rgba(11,110,110,0.6)"></div>
+        </div>
+        <div class="nlp-stage-notes"><span class="nlp-note">Dual-annotator consensus</span><span class="nlp-note">5.4M labeled data points</span><span class="nlp-note">90% inter-annotator agreement</span></div>
+      </div>
+      <div class="nlp-stage">
+        <div class="nlp-stage-header">
+          <span class="nlp-stage-name">Production Ready</span>
+          <span class="nlp-stage-pct">78%</span>
+        </div>
+        <div class="nlp-bar-track">
+          <div class="nlp-bar-fill" style="width:78%;background:#0B6E6E"></div>
+        </div>
+        <div class="nlp-stage-notes"><span class="nlp-note">Shipped to GCC enterprise</span><span class="nlp-note">Arabic NLP · Regulated markets</span></div>
+      </div></div>
+      <p class="nlp-governance">Governance layer: accuracy threshold &gt;85% set before GA · hallucination rate &lt;5% · human review on all edge cases</p>
+    </div>
+        <div style="margin-top:3rem">
           
-    <article class="framework-card" data-slug="ai-cx-readiness">
-      <h3 class="fw-title">AI-CX Client Readiness Diagnostic</h3>
+    <div class="card">
+      <div style="padding:2rem 2rem 0">
+        <div class="maturity-title">AI-CX Client Readiness Diagnostic</div>
+        <div class="maturity-subtitle">5-dimension framework -- built from 40+ enterprise deployments across GCC</div>
+      </div>
+      
+    <div class="maturity-tier">
+      <div class="maturity-tier-letter">A</div>
+      <div class="maturity-tier-content">
+        <div class="maturity-tier-name">Feedback + Analytics</div>
+        <div class="maturity-tier-desc">Collect feedback, run NLP, view dashboards</div>
+      </div>
+      <div class="maturity-tier-tag">Entry point</div>
+    </div>
+    <div class="maturity-tier">
+      <div class="maturity-tier-letter">B</div>
+      <div class="maturity-tier-content">
+        <div class="maturity-tier-name">Workflow Automation</div>
+        <div class="maturity-tier-desc">Feedback triggers automated recovery actions</div>
+      </div>
+      <div class="maturity-tier-tag">Requires defined processes</div>
+    </div>
+    <div class="maturity-tier">
+      <div class="maturity-tier-letter">C</div>
+      <div class="maturity-tier-content">
+        <div class="maturity-tier-name">Natural Language Q&amp;A</div>
+        <div class="maturity-tier-desc">Analysts query feedback corpus in plain English</div>
+      </div>
+      <div class="maturity-tier-tag">Requires data literacy</div>
+    </div>
+    <div class="maturity-tier maturity-tier-d">
+      <div class="maturity-tier-letter">D</div>
+      <div class="maturity-tier-content">
+        <div class="maturity-tier-name">Agentic AI</div>
+        <div class="maturity-tier-desc">AI acts autonomously -- routes, responds, escalates without human initiation</div>
+      </div>
+      <div class="maturity-tier-tag">Requires executive governance</div>
+    </div>
+      <div class="maturity-note">Critical rule: score what the client demonstrates, not what they claim.</div>
+    </div>
+        </div>
+        <div style="margin-top:3rem">
+    <div class="card" style="padding:2rem;margin-bottom:1.5rem">
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">AI-CX Client Readiness Diagnostic</h3>
       <div class="fw-body"><h1>AI-CX Client Readiness Diagnostic</h1>
 
 <p>A 5-dimension framework for determining which AI product tier a client is ready to adopt. Developed from GCC enterprise deployments.
@@ -718,10 +1038,9 @@ toward together.</p></div>
 </ul>
 
 <p>Clients who pass gates but fail on Data or Technology need an implementation sprint before product onboarding begins.</p></div>
-    </article>
-
-    <article class="framework-card" data-slug="cape-framework">
-      <h3 class="fw-title">CAPE Framework: CX Analytics & Product Execution</h3>
+    </div>
+    <div class="card" style="padding:2rem;margin-bottom:1.5rem">
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">CAPE Framework: CX Analytics & Product Execution</h3>
       <div class="fw-body"><h1>CAPE Framework: CX Analytics & Product Execution</h1>
 
 <p>A collection of operational frameworks used across product, analytics, and team leadership at Dropthought and Bahwan CyberTek.
@@ -841,10 +1160,9 @@ Result: <strong>50% improvement in development velocity</strong>.
 </p>
 <h3>CX Accountability Culture</h3>
 <p>Universal NPS distribution. Decoupled response rate from CS metrics. Embedded retention, NPS, ease-of-use as shared OKRs.</p></div>
-    </article>
-
-    <article class="framework-card" data-slug="roi-model">
-      <h3 class="fw-title">AI-CX ROI Model: GCC Enterprise</h3>
+    </div>
+    <div class="card" style="padding:2rem;margin-bottom:1.5rem">
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">AI-CX ROI Model: GCC Enterprise</h3>
       <div class="fw-body"><h1>AI-CX ROI Model: GCC Enterprise</h1>
 
 <p>A three-category ROI framework built for CFO conversations in GCC enterprise sales. Based on GCC BFSI benchmarks.
@@ -889,24 +1207,81 @@ Result: <strong>50% improvement in development velocity</strong>.
 <h2>How to Use This</h2>
 
 <p>Present worst-case ROI (121%) in first CFO conversation. Move to base case only after data audit confirms client's current retention rate and reporting overhead. Never lead with the upside. It invites skepticism. Lead with the floor.</p></div>
-    </article>
+    </div></div>
+      </div>
+    </section>
+    
+    <section id="experience" class="section-experience">
+      <div class="container">
+        
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="section-num">04</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">14 years across the US, GCC, and Asia.</p>
+    </div>
+        <div class="experience-list">
+    <div class="experience-item">
+      <div class="exp-dates">2016 - Present</div>
+      <div class="exp-content">
+        <div class="exp-role">Sr. Director of Product</div>
+        <div class="exp-company">Bahwan CyberTek (Dropthought)</div>
+        <div class="exp-summary">Built AI-CX feedback intelligence platform from $0 to $6M ARR. Scaled enterprise across GCC regulated markets, 40+ engineers. Led Arabic NLP pipeline, $1.2M M&amp;A, 96% retention.</div>
+      </div>
+    </div>
+    <div class="experience-item">
+      <div class="exp-dates">2012 - 2016</div>
+      <div class="exp-content">
+        <div class="exp-role">Product Manager</div>
+        <div class="exp-company">Enterprise Software, GCC</div>
+        <div class="exp-summary">B2B SaaS product management across GCC and Asia markets. CX platform expansion, government and telco verticals.</div>
+      </div>
+    </div>
+    <div class="experience-item">
+      <div class="exp-dates">2010 - 2012</div>
+      <div class="exp-content">
+        <div class="exp-role">Master of Engineering Management</div>
+        <div class="exp-company">Dartmouth College (Thayer + Tuck)</div>
+        <div class="exp-summary">Engineering + business leadership program bridging Thayer School of Engineering and Tuck School of Business.</div>
+      </div>
+    </div>
+    <div class="experience-item">
+      <div class="exp-dates">2003 - 2007</div>
+      <div class="exp-content">
+        <div class="exp-role">B.E. Electrical and Electronics Engineering</div>
+        <div class="exp-company">Anna University</div>
+        <div class="exp-summary">Foundation in systems design and engineering.</div>
+      </div>
+    </div></div>
+        <div style="margin-top:2rem">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.75rem">Certifications</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap"><span class="cs-tag">CCXP</span> <span class="cs-tag">SAFe 6 LPM</span> <span class="cs-tag">AWS Cloud Practitioner</span> <span class="cs-tag">AWS AI Practitioner</span> <span class="cs-tag">DESC ISR</span> <span class="cs-tag">ISO 27001</span></div>
         </div>
       </div>
     </section>
     
-    <section id="people" class="people">
+    <section id="people" class="section-people">
       <div class="container">
-        <h2 class="section-title">From the Team</h2>
+        
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="section-num">05</span>
+        <div class="section-rule"></div>
+      </div>
+      <h2 class="section-title">From the Team</h2>
+      <p class="section-subtitle">People I have had the privilege of building with.</p>
+    </div>
         <div class="testimonials-grid">
-          
     <figure class="testimonial-card">
       <blockquote class="testimonial-quote">He doesn't just build products. He builds people. Any organization would be incredibly fortunate to have him, not just as a leader, but as a force multiplier for people and culture.</blockquote>
       <figcaption>
-        <span class="testimonial-initials">AP</span>
+        <div class="testimonial-initials">AP</div>
         <div class="testimonial-attribution">
           <strong>Aishwarya Prasad</strong>
           <span>Product Manager, S&P Global Mobility</span>
-          <span class="testimonial-relationship">Direct report · 6 years</span>
+          <span>Direct report &middot; 6 years</span>
         </div>
       </figcaption>
     </figure>
@@ -914,11 +1289,11 @@ Result: <strong>50% improvement in development velocity</strong>.
     <figure class="testimonial-card">
       <blockquote class="testimonial-quote">He uses data not as a checkbox, but as a genuine tool for thinking. He has a knack for spotting patterns and insights that most people would miss.</blockquote>
       <figcaption>
-        <span class="testimonial-initials">RD</span>
+        <div class="testimonial-initials">RD</div>
         <div class="testimonial-attribution">
           <strong>Ranjita Das</strong>
           <span>Senior Product Manager · Responsible AI Advocate</span>
-          <span class="testimonial-relationship">Direct report</span>
+          <span>Direct report</span>
         </div>
       </figcaption>
     </figure>
@@ -926,11 +1301,11 @@ Result: <strong>50% improvement in development velocity</strong>.
     <figure class="testimonial-card">
       <blockquote class="testimonial-quote">He consistently drove product vision to design execution in complex, constrained environments, making clear wins vs. trade-offs, aligning teams, and keeping focus on needed outcomes. Anirudh operates at a senior leadership level and is someone I would trust to lead product in any organization.</blockquote>
       <figcaption>
-        <span class="testimonial-initials">RB</span>
+        <div class="testimonial-initials">RB</div>
         <div class="testimonial-attribution">
           <strong>Roy Barman</strong>
           <span>CTO & VP of AI and Software Engineering</span>
-          <span class="testimonial-relationship">Cross-functional partner</span>
+          <span>Cross-functional partner</span>
         </div>
       </figcaption>
     </figure>
@@ -938,31 +1313,46 @@ Result: <strong>50% improvement in development velocity</strong>.
     <figure class="testimonial-card">
       <blockquote class="testimonial-quote">He moved naturally across product, engineering and sales, bringing technical and product knowledge directly into sales, helping shape proposals that were credible and compelling.</blockquote>
       <figcaption>
-        <span class="testimonial-initials">SP</span>
+        <div class="testimonial-initials">SP</div>
         <div class="testimonial-attribution">
           <strong>Shibani Philip</strong>
           <span>Director, CX Consulting</span>
-          <span class="testimonial-relationship">Cross-functional colleague</span>
+          <span>Cross-functional colleague</span>
         </div>
       </figcaption>
-    </figure>
-        </div>
+    </figure></div>
       </div>
     </section>
   </main>
   
-    <footer id="contact" class="footer">
+    <section id="contact" class="section-contact footer">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p>Anirudh Sriraman · Dubai, UAE</p>
-        <div class="footer-links">
-          <a href="mailto:anirudhsriraman@gmail.com">anirudhsriraman@gmail.com</a>
-          <a href="https://wa.me/971527320022">WhatsApp +971527320022</a>
-          <a href="https://www.linkedin.com/in/anirudh-sriraman-55471118/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-        <p class="footer-updated">Last updated: 2026-05-14</p>
+        
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <span class="section-num">06</span>
+        <div class="section-rule"></div>
       </div>
-    </footer>
+      <h2 class="section-title">Contact</h2>
+      
+    </div>
+        <div class="footer-grid">
+          <div>
+            <p class="footer-cta-title">Let's build something that matters.</p>
+            <div class="footer-links">
+              <a href="mailto:anirudhsriraman@gmail.com" class="footer-link">&#9993; anirudhsriraman@gmail.com</a>
+              <a href="https://wa.me/971527320022" class="footer-link">&#128241; WhatsApp +971527320022</a>
+              <a href="https://www.linkedin.com/in/anirudh-sriraman-55471118/" class="footer-link" target="_blank" rel="noopener">&#128101; LinkedIn Profile</a>
+            </div>
+          </div>
+          <div class="footer-info">
+            <p>Anirudh Sriraman</p>
+            <p>Dubai, UAE</p>
+            <p>Last updated: 2026-05-14</p>
+          </div>
+        </div>
+      </div>
+    </section>
   <script id="portfolio-status" type="application/json">
 {
   "availability": "open",
@@ -1052,5 +1442,15 @@ Result: <strong>50% improvement in development velocity</strong>.
   }
 }
   </script>
+  <script>
+  document.querySelectorAll('.cs-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = btn.getAttribute('data-idx');
+      var exp = document.getElementById('cs-exp-' + idx);
+      var isOpen = exp.classList.toggle('open');
+      btn.innerHTML = isOpen ? 'Close story &#9652;' : 'Read full story &#9662;';
+    });
+  });
+</script>
 </body>
 </html>
