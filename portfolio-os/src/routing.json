@@ -1,0 +1,324 @@
+{
+  "generated": "2026-05-14T17:07:54.663Z",
+  "agent": "website-architect",
+  "build_hash": "cdec9c277cbd",
+  "section_counts": {
+    "hero": 1,
+    "status_banner": 1,
+    "work": 7,
+    "thinking": 3,
+    "people": 4
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "source": "content/profile.md",
+      "slug": null,
+      "priority": 0,
+      "meta": {
+        "name": "Anirudh Sriraman",
+        "title": "Director / VP Product"
+      }
+    },
+    {
+      "id": "status-banner",
+      "source": "content/status.md",
+      "slug": null,
+      "priority": 0,
+      "meta": {
+        "availability": "open",
+        "status-label": "Available"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/dropthought-zero-to-arr.md",
+      "slug": "dropthought-zero-to-arr",
+      "priority": 1,
+      "meta": {
+        "title": "From Mickey Mouse to Cisco: Validating an Enterprise Product",
+        "audience": [
+          "founder-ceo",
+          "vp-product"
+        ],
+        "metrics": "",
+        "tags": [
+          "zero-to-one",
+          "validation",
+          "enterprise",
+          "pivot",
+          "research"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/presales-transformation.md",
+      "slug": "presales-transformation",
+      "priority": 1,
+      "meta": {
+        "title": "Rebuilding the Enterprise Win Rate",
+        "audience": [
+          "recruiter",
+          "cpo",
+          "dx"
+        ],
+        "metrics": [
+          "14→35% RFP win rate",
+          "27 scoring dimensions",
+          "$25M+ pipeline managed"
+        ],
+        "tags": [
+          "presales",
+          "enterprise",
+          "sales-strategy",
+          "opportunity-scoring",
+          "b2b-saas"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/great-resignation.md",
+      "slug": "great-resignation",
+      "priority": 2,
+      "meta": {
+        "title": "Inheriting Engineering During the Great Resignation",
+        "audience": [
+          "recruiter",
+          "cpo",
+          "dx"
+        ],
+        "metrics": [
+          "40 engineers led",
+          "0 penalties incurred",
+          "3 PMs promoted"
+        ],
+        "tags": [
+          "engineering-leadership",
+          "team-retention",
+          "delivery",
+          "people-management"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/pm-org-design.md",
+      "slug": "pm-org-design",
+      "priority": 2,
+      "meta": {
+        "title": "Building the PM Growth System: From Startup Chaos to",
+        "audience": [
+          "vp-product",
+          "founder-ceo"
+        ],
+        "metrics": "",
+        "tags": [
+          "org-design",
+          "pm-development",
+          "career-ladder",
+          "mentorship",
+          ""
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/arabic-nlp.md",
+      "slug": "arabic-nlp",
+      "priority": 3,
+      "meta": {
+        "title": "Building Arabic NLP from Scratch",
+        "audience": [
+          "cpo",
+          "dx"
+        ],
+        "metrics": [
+          "52→78% NLP accuracy",
+          "5.4M+ labeled data points",
+          "90% inter-annotator agreement"
+        ],
+        "tags": [
+          "nlp",
+          "arabic",
+          "machine-learning",
+          "annotation",
+          "gccc",
+          "ai"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/krita-acquisition.md",
+      "slug": "krita-acquisition",
+      "priority": 4,
+      "meta": {
+        "title": "Krita.ai Acquisition",
+        "audience": [
+          "cpo",
+          "recruiter"
+        ],
+        "metrics": [
+          "$1.2M acquisition led",
+          "18-month roadmap acceleration",
+          "3 products in portfolio"
+        ],
+        "tags": [
+          "m-and-a",
+          "agentic-ai",
+          "product-strategy",
+          "due-diligence",
+          "portfolio"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "work",
+      "source": "content/case-studies/govtech-telecom.md",
+      "slug": "govtech-telecom",
+      "priority": 5,
+      "meta": {
+        "title": "Government & Telecom CX at Scale",
+        "audience": [
+          "recruiter",
+          "cpo",
+          "dx"
+        ],
+        "metrics": [
+          "810K+ annual calls (TD123)",
+          "25% CSAT improvement (Imagine Telecom)",
+          "30% faster service delivery"
+        ],
+        "tags": [
+          "govtech",
+          "telecom",
+          "cx-platform",
+          "omnichannel",
+          "contact-centre",
+          "gcc"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "thinking",
+      "source": "content/frameworks/ai-cx-readiness.md",
+      "slug": "ai-cx-readiness",
+      "priority": 99,
+      "meta": {
+        "title": "AI-CX Client Readiness Diagnostic",
+        "audience": [
+          "cpo",
+          "dx"
+        ],
+        "tags": [
+          "ai",
+          "cx",
+          "readiness",
+          "diagnostic",
+          "gcc",
+          "enterprise"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "thinking",
+      "source": "content/frameworks/cape-framework.md",
+      "slug": "cape-framework",
+      "priority": 99,
+      "meta": {
+        "title": "CAPE Framework: CX Analytics & Product Execution",
+        "audience": [
+          "cpo",
+          "dx"
+        ],
+        "tags": [
+          "analytics",
+          "cx",
+          "product-management",
+          "metrics",
+          "churn",
+          "engagement"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "thinking",
+      "source": "content/frameworks/roi-model.md",
+      "slug": "roi-model",
+      "priority": 99,
+      "meta": {
+        "title": "AI-CX ROI Model: GCC Enterprise",
+        "audience": [
+          "cpo",
+          "dx",
+          "recruiter"
+        ],
+        "tags": [
+          "roi",
+          "ai",
+          "cx",
+          "gcc",
+          "enterprise",
+          "bfsi",
+          "cfo"
+        ],
+        "status": "published"
+      }
+    },
+    {
+      "id": "people",
+      "source": "content/testimonials/aishwarya-prasad.md",
+      "slug": "aishwarya-prasad",
+      "priority": 99,
+      "meta": {
+        "name": "Aishwarya Prasad",
+        "title": "Product Manager, S&P Global Mobility",
+        "relationship": "Direct report"
+      }
+    },
+    {
+      "id": "people",
+      "source": "content/testimonials/ranjita-das.md",
+      "slug": "ranjita-das",
+      "priority": 99,
+      "meta": {
+        "name": "Ranjita Das",
+        "title": "Senior Product Manager · Responsible AI Advocate",
+        "relationship": "Direct report"
+      }
+    },
+    {
+      "id": "people",
+      "source": "content/testimonials/roy-barman.md",
+      "slug": "roy-barman",
+      "priority": 99,
+      "meta": {
+        "name": "Roy Barman",
+        "title": "CTO & VP of AI and Software Engineering",
+        "relationship": "Cross-functional partner"
+      }
+    },
+    {
+      "id": "people",
+      "source": "content/testimonials/shibani-philip.md",
+      "slug": "shibani-philip",
+      "priority": 99,
+      "meta": {
+        "name": "Shibani Philip",
+        "title": "Director, CX Consulting",
+        "relationship": "Cross-functional colleague"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "default_persona": "vp-product",
+  "personas": {
+    "founder-ceo": {
+      "label": "Founder / CEO",
+      "context": "AI company, ~$20M",
+      "hero_variant": "zero-to-one",
+      "case_studies": [
+        "dropthought-zero-to-arr",
+        "krita-acquisition"
+      ],
+      "lead_metric": "$6M ARR from zero, Cisco first of 5 enterprise wins",
+      "lead_framework": "ai-cx-readiness",
+      "cta_variant": "founder"
+    },
+    "vp-product": {
+      "label": "VP of Product",
+      "context": "Enterprise B2B SaaS",
+      "hero_variant": "commercial",
+      "case_studies": [
+        "great-resignation",
+        "pm-org-design",
+        "krita-acquisition"
+      ],
+      "lead_metric": "96% retention, 40% expansion revenue, 3 PMs promoted",
+      "lead_framework": "roi-model",
+      "cta_variant": "operator"
+    },
+    "vp-ai": {
+      "label": "VP / Head of AI Innovation",
+      "context": "Any sector",
+      "hero_variant": "ai-practitioner",
+      "case_studies": [
+        "arabic-nlp",
+        "krita-acquisition"
+      ],
+      "lead_metric": "52%→78% NLP accuracy, 5.4M+ labeled data points",
+      "lead_framework": "ai-cx-readiness",
+      "cta_variant": "technical"
+    },
+    "vp-dx": {
+      "label": "VP of Digital Transformation",
+      "context": "Govt, Telco, Retail, Hospitality",
+      "hero_variant": "commercial",
+      "case_studies": [
+        "great-resignation"
+      ],
+      "lead_metric": "810K+ calls annually, 30% faster service delivery",
+      "lead_framework": "ai-cx-readiness",
+      "cta_variant": "operator"
+    },
+    "vp-cx": {
+      "label": "VP of Customer Experience",
+      "context": "Govt, Telco, Retail, Hospitality",
+      "hero_variant": "cx-practitioner",
+      "case_studies": [
+        "govtech-telecom"
+      ],
+      "lead_metric": "70%→96% retention, 40% expansion revenue",
+      "lead_framework": "roi-model",
+      "cta_variant": "operator"
+    },
+    "recruiter": {
+      "label": "Recruiter",
+      "context": "Placing senior product leaders",
+      "hero_variant": "credentials",
+      "case_studies": [
+        "krita-acquisition",
+        "govtech-telecom",
+        "presales-transformation"
+      ],
+      "lead_metric": "14+ years, $6M ARR, 96% retention, 14%→35% win rate",
+      "lead_framework": null,
+      "cta_variant": "recruiter"
+    }
+  }
+}
