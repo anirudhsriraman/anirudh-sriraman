@@ -780,6 +780,48 @@ toward together.</p></div>
       </div></div>
       </article>
 
+      <article class="case-study-card" data-slug="arabic-nlp" data-priority="3">
+        <div class="cs-card-top">
+          <span class="cs-metric-badge">52→78% NLP accuracy</span>
+          <div class="cs-tags"><span class="cs-tag">nlp</span><span class="cs-tag">arabic</span><span class="cs-tag">machine-learning</span></div>
+        </div>
+        <h3 class="cs-title">Building Arabic NLP from Scratch</h3>
+        <p class="cs-preview">A VP Product inheriting a team needs to know two things: can this 
+person grow PMs deliberately, and can they hold a performance standard 
+without losing the team. This story is about building the system that 
+did both  -  from scratch, inside a company that had never needed one.</p>
+        <button class="cs-toggle" data-idx="5">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-5">
+          
+          <div class="cs-section">
+            <div class="cs-section-label">Context</div>
+            <div class="cs-section-text"><p>Sales was pursuing every RFP regardless of fit. Win rate plateaued at 14%. There was no framework to distinguish winnable opportunities from noise, and RFP responses were written in product language rather than buyer language.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Decision</div>
+            <div class="cs-section-text"><p>Built a 27-dimension opportunity scoring model that segmented prospects into four CX maturity tiers. Repositioned RFP responses around buyer language, matching the client's stated pain to our differentiated capability. Introduced a qualification gate before committing presales resources.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Action</div>
+            <div class="cs-section-text"><p>This work was happening while the platform was scaling from zero to $6M ARR, so each percentage point of win rate carried direct revenue consequence.</p></div>
+          </div>
+          <div class="cs-section">
+            <div class="cs-section-label">Outcome</div>
+            <div class="cs-section-text"><p>Win rate climbed from 14% to 35%. The qualification framework became standard presales practice across the team. Pipeline quality improved, reducing wasted cycles on low-fit deals.</p></div>
+          </div>
+        </div>
+        <div class="cs-footer">
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">52→78% NLP accuracy</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">5.4M+ labeled data points</span>
+      </div>
+      <div class="cs-footer-metric">
+        <span class="cs-footer-number">90% inter-annotator agreement</span>
+      </div></div>
+      </article>
+
       <article class="case-study-card" data-slug="krita-acquisition" data-priority="4">
         <div class="cs-card-top">
           <span class="cs-metric-badge">$1.2M acquisition led</span>
@@ -787,8 +829,8 @@ toward together.</p></div>
         </div>
         <h3 class="cs-title">Krita.ai Acquisition</h3>
         <p class="cs-preview">A capital-constrained build vs buy decision: no existing agentic AI capability, an 18-month internal build estimate, and a competitive window closing. $1.2M was deployed to collapse the roadmap gap through acquisition  -  requiring full ownership of strategy and execution, from technical due diligen</p>
-        <button class="cs-toggle" data-idx="5">Read full story &#9662;</button>
-        <div class="cs-expanded" id="cs-exp-5">
+        <button class="cs-toggle" data-idx="6">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-6">
           
           <div class="cs-section">
             <div class="cs-section-label">Context</div>
@@ -828,8 +870,8 @@ toward together.</p></div>
         <p class="cs-preview">Government & Telecom CX at Scale
 
 **Metrics:** 810K+ annual calls | 25% CSAT improvement | 30% faster service delivery</p>
-        <button class="cs-toggle" data-idx="6">Read full story &#9662;</button>
-        <div class="cs-expanded" id="cs-exp-6">
+        <button class="cs-toggle" data-idx="7">Read full story &#9662;</button>
+        <div class="cs-expanded" id="cs-exp-7">
           
           <div class="cs-section">
             <div class="cs-section-label">Context</div>
@@ -1002,241 +1044,202 @@ toward together.</p></div>
         </div>
         <div style="margin-top:3rem">
     <div class="card" style="padding:2rem;margin-bottom:1.5rem">
-      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">AI-CX Client Readiness Diagnostic</h3>
-      <div class="fw-body"><h1>AI-CX Client Readiness Diagnostic</h1>
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">AI Readiness Diagnostic</h3>
+      <div class="fw-body"><h1>AI Readiness Diagnostic</h1>
 
-<p>A 5-dimension framework for determining which AI product tier a client is ready to adopt. Developed from GCC enterprise deployments.
+<p>Most enterprise AI projects fail not because the AI was bad — but because the organisation wasn't ready for it. Clients would buy Tier D (agentic AI) and struggle to run Tier A (basic dashboards). I built this diagnostic to fix that.
 
 </p>
 <blockquote>"Score what the client demonstrates, not what they claim."</blockquote>
 
-<h2>Product Tiers</h2>
+<h2>How I assess which tier a client is ready for</h2>
 
-<table>
-<thead><tr><th>Tier</th><th>Capability</th></tr></thead>
-<tbody><tr><td><strong>A</strong></td><td>Feedback + Analytics: collect, NLP, view dashboards</td></tr>
-<tr><td><strong>B</strong></td><td>+ Workflow Automation: feedback triggers automated recovery actions</td></tr>
-<tr><td><strong>C</strong></td><td>+ Natural Language Q&A: analysts ask questions in plain English</td></tr>
-<tr><td><strong>D</strong></td><td>+ Agentic AI: AI acts autonomously without human initiation</td></tr></tbody>
-</table>
+<p>I score the client across 5 dimensions — each rated Low, Medium, or High. Together, the scores reveal the highest tier the client can realistically absorb.
 
-<h2>Five Dimensions (scored Low / Medium / High)</h2>
+<p><strong>Data</strong> — Is their feedback centralised, Arabic-capable, and real-time accessible?
 
-<p><strong>Data</strong>
+<p><strong>Technology</strong> — Do they have integration capability, compliance posture (DESC ISR / PDPL), and cloud vs on-prem clarity?
+
+<p><strong>Process</strong> — Does a closed-loop mechanism exist? Are cross-functional handoffs defined?
+
+<p><strong>People</strong> — Can the CX team self-serve data? Do they have authority to act on what they find?
+
+<p><strong>Leadership</strong> — Is there a named executive sponsor? Is CX tied to revenue KPIs?
+
+</p>
+<h2>The blockers (critical gates)</h2>
+
+<p>Failing any of these means the client cannot operate at that tier — regardless of budget or intent.
+
 </p>
 <ul>
-<li>Feedback centralised</li>
-<li>Arabic handled</li>
-<li>Real-time accessible</li>
+<li><strong>To reach Tier B:</strong> Process must be at least Medium</li>
+<li><strong>To reach Tier C:</strong> People must be High</li>
+<li><strong>To reach Tier D:</strong> Leadership must be High</li>
 </ul>
 
-<p><strong>Technology</strong>
-</p>
-<ul>
-<li>Integration capability</li>
-<li>DESC ISR / PDPL compliance</li>
-<li>Cloud vs on-prem posture</li>
-</ul>
+<h2>What happens next</h2>
 
-<p><strong>Process</strong>
-</p>
-<ul>
-<li>Closed-loop mechanism exists</li>
-<li>Cross-functional handoffs defined</li>
-</ul>
-
-<p><strong>People</strong>
-</p>
-<ul>
-<li>CX team can self-serve data</li>
-<li>Has authority to act on insight</li>
-</ul>
-
-<p><strong>Leadership</strong>
-</p>
-<ul>
-<li>Named executive sponsor</li>
-<li>CX tied to revenue KPIs</li>
-</ul>
-
-<h2>Critical Gates</h2>
-
-<ul>
-<li><strong>Tier B:</strong> Process must be Medium</li>
-<li><strong>Tier C:</strong> People must be High</li>
-<li><strong>Tier D:</strong> Leadership must be High</li>
-</ul>
-
-<p>Clients who pass gates but fail on Data or Technology need an implementation sprint before product onboarding begins.</p></div>
+<p>Clients who fail a gate go into an implementation sprint first. We fix the readiness gap before we build the AI layer. This prevents post-launch adoption failure and protects the renewal.</p></div>
     </div>
     <div class="card" style="padding:2rem;margin-bottom:1.5rem">
-      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">CAPE Framework: CX Analytics & Product Execution</h3>
-      <div class="fw-body"><h1>CAPE Framework: CX Analytics & Product Execution</h1>
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">DEAR Model: Predicting Churn 6 Months Early</h3>
+      <div class="fw-body"><h1>DEAR Model: Predicting Churn 6 Months Early</h1>
 
-<p>A collection of operational frameworks used across product, analytics, and team leadership at Dropthought and Bahwan CyberTek.
+<p>Most SaaS teams find out a customer is at risk when the renewal conversation turns cold. By then it's too late to recover the relationship — you're negotiating from weakness.
 
-</p>
-<hr>
-
-<h2>DEAR Model: Churn Prediction</h2>
-
-<p>Predicts churn 6 months before renewal using four dimensions:
+<p>I built the DEAR model to change that. It scores every account across four dimensions, updated monthly, and surfaces at-risk accounts 6 months before their renewal date.
 
 </p>
-<ul>
-<li><strong>D</strong>: Deployment (platform configured and live)</li>
-<li><strong>E</strong>: Engagement (users active and returning)</li>
-<li><strong>A</strong>: Adoption (workflows embedded in daily work)</li>
-<li><strong>R</strong>: ROI (client can articulate measurable value)</li>
-</ul>
+<h2>The 4 Dimensions</h2>
 
-<p>Clients with healthy Deployment scores had <strong>15% higher gross renewal rates</strong>.
+<p><strong>D — Deployment</strong>
+Is the platform properly configured and live? Clients who never completed onboarding churn at 3x the rate of fully deployed accounts.
+
+<p><strong>E — Engagement</strong>
+Are users logging in? Are they returning? A drop in engagement is the earliest leading indicator of churn — often 9 months before renewal.
+
+<p><strong>A — Adoption</strong>
+Are the platform's workflows embedded in the client's daily operations, or is it a tool they log into for monthly reports?
+
+<p><strong>R — ROI</strong>
+Can the client articulate measurable value from the platform? If they cannot answer "what has this done for us?", they will not renew.
 
 </p>
-<hr>
+<h2>What the data showed</h2>
 
-<h2>CS Analyst Framework: X/O Model</h2>
+<p>Clients with healthy Deployment scores (D = High) had <strong>15% higher gross renewal rates</strong> than clients with identical Engagement and Adoption scores but weak Deployment. This was counterintuitive — we expected Engagement to be the strongest predictor. It turned out that clients who never finished setup were quietly resentful of the product.
 
-<p>Six analysis patterns combining experience (X) and operational (O) data:
+</p>
+<h2>The result</h2>
+
+<p>Retention improved from <strong>70% to 96%</strong> over 18 months after the model was integrated into the CS workflow. The CS team shifted from reactive firefighting to proactive account management — working the flagged accounts 6 months out instead of scrambling at 30 days.</p></div>
+    </div>
+    <div class="card" style="padding:2rem;margin-bottom:1.5rem">
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">PM Org Design: Real Ownership from Day One</h3>
+      <div class="fw-body"><h1>PM Org Design: Real Ownership from Day One</h1>
+
+<p>The most common failure mode in PM teams is ambiguity about who actually owns what. Senior PMs hoard decisions. Junior PMs wait for permission. Nothing ships on time, and nobody grows.
+
+<p>I built two tools to fix this: a career ladder that defines what progression actually looks like, and an ownership model that ties authority to feature complexity rather than seniority.
+
+</p>
+<h2>The 5-Dimension Career Ladder</h2>
+
+<p>Progress on all five dimensions defines progression from Associate PM through Principal PM. No single dimension is enough on its own.
+
+<p><strong>1. Insight</strong> — Can they identify the right problem? Do they distinguish symptoms from causes?
+
+<p><strong>2. Strategy</strong> — Can they make trade-off decisions? Do they think in terms of bets, not features?
+
+<p><strong>3. Execution</strong> — Can they ship? Do they manage dependencies, resolve blockers, and hold a release date?
+
+<p><strong>4. Outcomes</strong> — Do they own the metric after launch? Do they close the loop between what shipped and what changed?
+
+<p><strong>5. Leadership</strong> — Do they make the people around them better? Can they run a room they don't formally own?
+
+</p>
+<h2>The Ownership Model</h2>
+
+<p>Authority is tied to feature size — not job title.
 
 </p>
 <table>
-<thead><tr><th>Pattern</th><th>Use</th></tr></thead>
-<tbody><tr><td><strong>X Why</strong></td><td>Find operational explanation for an experience data signal</td></tr>
-<tr><td><strong>O Drivers</strong></td><td>Find operational situation causing the experience data</td></tr>
-<tr><td><strong>X&O Predict</strong></td><td>Build projections from combined data</td></tr>
-<tr><td><strong>X&O Personalise</strong></td><td>Adjust treatment based on combined signals</td></tr>
-<tr><td><strong>X&O Alert</strong></td><td>Send proactive alerts on combined signals</td></tr>
-<tr><td><strong>X Value</strong></td><td>Measure experience improvement impact on business results</td></tr></tbody>
+<thead><tr><th>Feature size</th><th>What it means</th><th>PM authority</th></tr></thead>
+<tbody><tr><td><strong>S / M</strong></td><td>Small or medium scope, limited eng effort</td><td>Full PM authority — no approval needed</td></tr>
+<tr><td><strong>L</strong></td><td>Large scope, 2+ sprint cycles</td><td>Written brief required before scoping</td></tr>
+<tr><td><strong>XL / XXL</strong></td><td>Multi-quarter, cross-functional</td><td>Brief + stakeholder alignment required</td></tr></tbody>
 </table>
 
-<hr>
-
-<h2>BAU North Star</h2>
-
-<blockquote>"Best Active User identifies and shares insight consumed by 5+ people in 30 days, leading to 3+ documented improvements in a quarter."</blockquote>
-
-<p>Used to set product engagement targets and design activation flows.
+<p>The brief requirement for large features is not a bureaucratic gate — it is a forcing function. Writing the brief surfaces assumptions, aligns engineering early, and prevents the most common source of mid-sprint scope creep.
 
 </p>
-<hr>
+<blockquote>"This gave junior PMs real authority from day one — and gave senior PMs visibility into the work without micromanaging it."</blockquote>
 
-<h2>Three-Layer Metrics Architecture</h2>
+<h2>The outcome</h2>
 
-<p><strong>Signal quality → Experience quality → Business outcomes</strong>
-
-<p>Built Tableau connecting all three layers into a single leadership view.
-
-</p>
-<blockquote>"CX programs lose organisational credibility when metrics are reported in isolation."</blockquote>
-
-<hr>
-
-<h2>Engagement Funnel (Mixpanel)</h2>
-
-<p>Four-stage funnel: first-time → new → ordinary → <strong>engaged</strong>
-
-<p><strong>Engaged user definition:</strong> logs in every weekday, spends 30+ minutes weekly, responds to 5%+ of feedback items.
-
-</p>
-<hr>
-
-<h2>Client Health Scoring (Totango)</h2>
-
-<p>Eight-dimension health score with weights derived from renewal correlations.
-
-<p>Key finding: users with <strong>high NPS but declining engagement</strong> predicted silent churn.
-
-<p>Retention improved from <strong>70% to 96%</strong> after health score integration.
-
-</p>
-<hr>
-
-<h2>PM Career Ladder</h2>
-
-<p>Five-dimension ladder from Associate PM through Principal PM:
-
-<p>1. Insight
-2. Strategy
-3. Execution
-4. Outcomes
-5. Leadership
-
-<p><strong>Ownership model by engineering effort:</strong>
-</p>
-<ul>
-<li>S and M features: full PM authority</li>
-<li>L, XL, XXL features: written brief required</li>
-</ul>
-
-<blockquote>"This gave junior PMs real authority from day one."</blockquote>
-
-<hr>
-
-<h2>Change Frameworks</h2>
-
-<h3>Waterfall → Agile</h3>
-<p>Two-track sprint planning, staggered engineering cycles, structured backlog governance.
-Result: <strong>50% improvement in development velocity</strong>.
-
-</p>
-<h3>Design Thinking</h3>
-<p>Restructured team into journey-aligned pods. Quarterly persona cadence. Shifted culture from belief-based to evidence-based decisions.
-
-</p>
-<h3>AI Adoption</h3>
-<p>Automated user research analysis, FAQ updates, release notes. AI-assisted QA recovered three weeks of timeline.
-
-</p>
-<h3>CX Accountability Culture</h3>
-<p>Universal NPS distribution. Decoupled response rate from CS metrics. Embedded retention, NPS, ease-of-use as shared OKRs.</p></div>
+<p>Three PMs were promoted during a 15-month stretch that included a VP of Engineering departure and a $2M delivery under pressure. The ownership model meant the team kept shipping without waiting for leadership to stabilise.</p></div>
     </div>
     <div class="card" style="padding:2rem;margin-bottom:1.5rem">
-      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">AI-CX ROI Model: GCC Enterprise</h3>
-      <div class="fw-body"><h1>AI-CX ROI Model: GCC Enterprise</h1>
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">AI-CX Business Case: 324% Year 1 ROI</h3>
+      <div class="fw-body"><h1>AI-CX Business Case Model</h1>
 
-<p>A three-category ROI framework built for CFO conversations in GCC enterprise sales. Based on GCC BFSI benchmarks.
+<p>Selling AI to enterprise finance teams requires translating product capabilities into financial language. I built this model specifically for GCC BFSI clients, where procurement decisions require a formal business case with documented ROI.
 
 </p>
-<blockquote>Illustrative model based on GCC BFSI benchmarks.</blockquote>
+<blockquote>Illustrative model based on GCC BFSI benchmarks. Always validate against the client's actual retention rate and reporting overhead before presenting.</blockquote>
 
-<h2>Summary</h2>
+<h2>The Numbers</h2>
 
 <table>
 <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-<tbody><tr><td><strong>Year 1 ROI (base case)</strong></td><td>324%</td></tr>
+<tbody><tr><td><strong>Year 1 ROI — base case</strong></td><td>324%</td></tr>
+<tr><td><strong>Year 1 ROI — worst case</strong></td><td>121%</td></tr>
 <tr><td><strong>Payback period</strong></td><td>2.8 months</td></tr>
-<tr><td><strong>Worst case ROI</strong></td><td>121%</td></tr></tbody>
+<tr><td><strong>Total annual benefit</strong></td><td>$627K – $1.87M</td></tr></tbody>
 </table>
 
-<h2>Value Categories</h2>
+<h2>The Three Value Categories</h2>
 
-<h3>Retention Value</h3>
-<p>AI churn flagging + automated recovery workflows
+<h3>1. Retention Value — the big number</h3>
 
-</p>
-<ul>
-<li><strong>Range:</strong> $600K–$1.8M annually</li>
-<li>Driver: Identifying at-risk accounts 6 months before renewal using DEAR model signals</li>
-</ul>
-
-<h3>Operational Value</h3>
-<p>1.2 FTE freed from manual reporting and data reconciliation
+<p>AI churn flagging + automated recovery workflows catch at-risk accounts 6 months before renewal.
 
 </p>
 <ul>
-<li><strong>Range:</strong> $27K–$68K annually</li>
-<li>Driver: Automated dashboards replacing analyst-assembled reports</li>
+<li>Value range: <strong>$600K – $1.8M annually</strong></li>
+<li>How it works: The DEAR model scores each account on Deployment, Engagement, Adoption, and ROI signals. Accounts flagged as at-risk get automated outreach and a recovery workflow before the renewal conversation.</li>
 </ul>
 
-<h3>Total Annual Benefit</h3>
+<h3>2. Operational Value — the credibility number</h3>
 
-<p><strong>$627K–$1.87M</strong>
+<p>1.2 FTE freed from manually assembling reports that no one reads until something goes wrong.
 
 </p>
-<h2>How to Use This</h2>
+<ul>
+<li>Value range: <strong>$27K – $68K annually</strong></li>
+<li>How it works: Automated dashboards replace analyst-assembled Excel reports. The team shifts from data assembly to data interpretation.</li>
+</ul>
 
-<p>Present worst-case ROI (121%) in first CFO conversation. Move to base case only after data audit confirms client's current retention rate and reporting overhead. Never lead with the upside. It invites skepticism. Lead with the floor.</p></div>
+<h2>How I Present It</h2>
+
+<p>I always lead with worst-case ROI (121%) in the first CFO conversation. It sets a credible floor. I move to base case only after running a data audit that confirms the client's actual retention rate and reporting overhead.
+
+<p>Leading with the upside invites skepticism. Leading with the floor builds trust — and then the base case becomes a pleasant surprise.</p></div>
+    </div>
+    <div class="card" style="padding:2rem;margin-bottom:1.5rem">
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:1rem">X/O Analytics: Connecting Experience Data to Operations</h3>
+      <div class="fw-body"><h1>X/O Analytics: Connecting Experience Data to Operations</h1>
+
+<p>Experience data (X) tells you how customers feel. Operational data (O) tells you what actually happened. Reported in isolation, neither answers the question that matters: what do we do differently?
+
+<p>I structured our analytics practice around 6 patterns that force X and O to intersect. Each pattern produces a different type of actionable insight.
+
+</p>
+<h2>The 6 Patterns</h2>
+
+<p><strong>X Why</strong> — <em>"Our NPS dropped. Why?"</em>
+Use operational data to explain an experience signal. Find the process failure behind the score movement.
+
+<p><strong>O Drivers</strong> — <em>"Our handle time spiked. What does that do to satisfaction?"</em>
+Find the experience impact of an operational event. Understand the customer cost of operational decisions before making them.
+
+<p><strong>X&O Predict</strong> — <em>"Where will satisfaction be in 90 days?"</em>
+Build forward projections by combining trend lines from both data streams. Used for executive forecasting and board reporting.
+
+<p><strong>X&O Personalise</strong> — <em>"This segment has high NPS but low renewal rate — what's different about how we treat them?"</em>
+Adjust CS treatment based on combined signals. Prevents the trap of over-investing in happy customers while at-risk accounts go quiet.
+
+<p><strong>X&O Alert</strong> — <em>"Flag any account where satisfaction drops while operational metrics look healthy."</em>
+Proactive alerts that catch the accounts that would otherwise fall through the cracks — clients who are polite in surveys but disengaging in practice.
+
+<p><strong>X Value</strong> — <em>"What was the revenue impact of the CX improvement programme?"</em>
+Measure the business outcome of experience investments. The only pattern that speaks directly to the CFO conversation.
+
+</p>
+<h2>Why this matters</h2>
+
+<p>CX programmes lose organisational credibility when metrics are reported in isolation. A 4.2 NPS score means nothing to a CFO. An X Value analysis showing that a 1-point NPS improvement correlates with a 12% reduction in churn rate — that gets budget approved.</p></div>
     </div></div>
       </div>
     </section>
@@ -1306,6 +1309,46 @@ Result: <strong>50% improvement in development velocity</strong>.
         <div class="testimonials-grid">
     <figure class="testimonial-card">
       <blockquote class="testimonial-quote">He doesn't just build products. He builds people. Any organization would be incredibly fortunate to have him, not just as a leader, but as a force multiplier for people and culture.</blockquote>
+      <figcaption>
+        <div class="testimonial-initials">AP</div>
+        <div class="testimonial-attribution">
+          <strong>Aishwarya Prasad</strong>
+          <span>Product Manager, S&P Global Mobility</span>
+          <span>Direct report &middot; 6 years</span>
+        </div>
+      </figcaption>
+    </figure>
+
+    <figure class="testimonial-card">
+      <blockquote class="testimonial-quote">He doesn't just build products. He builds people. Any organization would be incredibly fortunate to have him, not just as a leader, but as a force multiplier for people and culture."
+---
+name: "Ranjita Das"
+initials: "RD"
+title: "Senior Product Manager · Responsible AI Advocate"
+relationship: "Direct report"
+status: published
+---
+
+"He uses data not as a checkbox, but as a genuine tool for thinking. He has a knack for spotting patterns and insights that most people would miss."
+---
+name: "Roy Barman"
+initials: "RB"
+title: "CTO & VP of AI and Software Engineering"
+company: "Bahwan CyberTek"
+relationship: "Cross-functional partner"
+status: published
+---
+
+"He consistently drove product vision to design execution in complex, constrained environments, making clear wins vs. trade-offs, aligning teams, and keeping focus on needed outcomes. Anirudh operates at a senior leadership level and is someone I would trust to lead product in any organization."
+---
+name: "Shibani Philip"
+initials: "SP"
+title: "Director, CX Consulting"
+relationship: "Cross-functional colleague"
+status: published
+---
+
+"He moved naturally across product, engineering and sales, bringing technical and product knowledge directly into sales, helping shape proposals that were credible and compelling.</blockquote>
       <figcaption>
         <div class="testimonial-initials">AP</div>
         <div class="testimonial-attribution">

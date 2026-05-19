@@ -1,55 +1,42 @@
 ---
-title: "AI-CX Client Readiness Diagnostic"
+title: "AI Readiness Diagnostic"
 slug: "ai-cx-readiness"
 type: framework
 audience: [cpo, dx]
 tags: [ai, cx, readiness, diagnostic, gcc, enterprise]
 status: published
+tagline: "When a client asks 'are we ready for AI?' — I have a structured answer."
+preview: "Most enterprise AI projects fail because the client wasn't ready for the level of AI they bought. I built a diagnostic to find out exactly which tier of AI a client can absorb before we scope anything."
 ---
 
-# AI-CX Client Readiness Diagnostic
+# AI Readiness Diagnostic
 
-A 5-dimension framework for determining which AI product tier a client is ready to adopt. Developed from GCC enterprise deployments.
+Most enterprise AI projects fail not because the AI was bad — but because the organisation wasn't ready for it. Clients would buy Tier D (agentic AI) and struggle to run Tier A (basic dashboards). I built this diagnostic to fix that.
 
 > "Score what the client demonstrates, not what they claim."
 
-## Product Tiers
+## How I assess which tier a client is ready for
 
-| Tier | Capability |
-|------|-----------|
-| **A** | Feedback + Analytics: collect, NLP, view dashboards |
-| **B** | + Workflow Automation: feedback triggers automated recovery actions |
-| **C** | + Natural Language Q&A: analysts ask questions in plain English |
-| **D** | + Agentic AI: AI acts autonomously without human initiation |
+I score the client across 5 dimensions — each rated Low, Medium, or High. Together, the scores reveal the highest tier the client can realistically absorb.
 
-## Five Dimensions (scored Low / Medium / High)
+**Data** — Is their feedback centralised, Arabic-capable, and real-time accessible?
 
-**Data**
-- Feedback centralised
-- Arabic handled
-- Real-time accessible
+**Technology** — Do they have integration capability, compliance posture (DESC ISR / PDPL), and cloud vs on-prem clarity?
 
-**Technology**
-- Integration capability
-- DESC ISR / PDPL compliance
-- Cloud vs on-prem posture
+**Process** — Does a closed-loop mechanism exist? Are cross-functional handoffs defined?
 
-**Process**
-- Closed-loop mechanism exists
-- Cross-functional handoffs defined
+**People** — Can the CX team self-serve data? Do they have authority to act on what they find?
 
-**People**
-- CX team can self-serve data
-- Has authority to act on insight
+**Leadership** — Is there a named executive sponsor? Is CX tied to revenue KPIs?
 
-**Leadership**
-- Named executive sponsor
-- CX tied to revenue KPIs
+## The blockers (critical gates)
 
-## Critical Gates
+Failing any of these means the client cannot operate at that tier — regardless of budget or intent.
 
-- **Tier B:** Process must be Medium
-- **Tier C:** People must be High
-- **Tier D:** Leadership must be High
+- **To reach Tier B:** Process must be at least Medium
+- **To reach Tier C:** People must be High
+- **To reach Tier D:** Leadership must be High
 
-Clients who pass gates but fail on Data or Technology need an implementation sprint before product onboarding begins.
+## What happens next
+
+Clients who fail a gate go into an implementation sprint first. We fix the readiness gap before we build the AI layer. This prevents post-launch adoption failure and protects the renewal.
