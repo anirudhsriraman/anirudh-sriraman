@@ -7,7 +7,7 @@ availability: open
 target-roles: ["VP Product", "CPO", "Head of Product"]
 email: "anirudhsriraman@gmail.com"
 whatsapp: "971527320022"
-linkedin: "https://www.linkedin.com/in/anirudh-sriraman-55471118/"
+linkedin: "https://www.linkedin.com/in/anirudh-sriraman-ccxp-safe-lpm-55471118/"
 updated: "2026-05-14"
 ---
 
